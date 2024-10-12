@@ -3,6 +3,7 @@ import PagerView from 'react-native-pager-view';
 import { cardsDetails, CardsType } from '../Carousel/Carousel';
 import { CardsProducts } from './CardsProducts';
 import { useState } from 'react';
+import { StyleSheet } from 'nativewind';
 
 const numberViewComponents: null[] = new Array(Math.ceil(cardsDetails.length / 4)).fill(null);
 
@@ -28,22 +29,28 @@ export function CarouselProducts() {
   const [cards, setCards] = useState<CardsType[]>(gerenateFourCards(0))
 
   return (
-    <View className='w-full h-full'>
-      <PagerView
-        initialPage={0}
-        style={{flex:1,  height:500}}
-      >
-        {
-          numberViewComponents.map((_, index) =>
+    <PagerView
+      initialPage={0}
+      style={style.pagerView}
+    >
+      {
+        numberViewComponents.map((_, index) =>
 
-            <View key={index} className='w-full h-full justify-center items-center gap-5 flex-row flex-wrap'>
-              {
-                cards.map((item) => <CardsProducts key={item.id} cardsDetails={item} />)
-              }
-            </View>
-          )
-        }
-      </PagerView>
-    </View>
+          <View key={index} className='w-full h-full justify-center items-center gap-5 flex-row flex-wrap'>
+            {
+              cards.map((item) => <CardsProducts key={item.id} cardsDetails={item} />)
+            }
+          </View>
+        )
+      }
+    </PagerView>
   )
 }
+
+const style = StyleSheet.create({
+  pagerView: {
+    flex: 1,
+    height: 540,
+    width: '100%',
+  },
+})

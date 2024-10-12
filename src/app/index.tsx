@@ -6,7 +6,7 @@ import { Footer } from "../components/Footer";
 
 export default function Index() {
   return (
-      <View>
+      <View className="w-full h-full">
         <Banner image={require('../assets/images/banner.png')} />
         <Carousel />
         <ProductsHome />

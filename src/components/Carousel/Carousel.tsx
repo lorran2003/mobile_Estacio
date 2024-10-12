@@ -1,14 +1,13 @@
-import PagerView from 'react-native-pager-view'
 import { CarouselCards } from './CarouselCards'
 import { FlatList, View } from 'react-native';
 import { useEffect, useRef } from 'react';
 
-interface CardsType {
+export interface CardsType {
   id: number;
   img: any;
 }
 
-const containerCarousel: CardsType[] = [
+export const cardsDetails: CardsType[] = [
   {
     id: 1,
     img: require('../../assets/images/imgCarousel.png')
@@ -45,8 +44,7 @@ export function Carousel() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % containerCarousel.length;
-      console.log(currentIndex)
+      currentIndex = (currentIndex + 1) % cardsDetails.length;
       flatListRef.current?.scrollToIndex({ index: currentIndex, animated: true })
     }, 2500)
 
@@ -54,14 +52,15 @@ export function Carousel() {
   })
 
   return (
-    <View className='h-full py-5'>
+    <View>
       <FlatList
         ref={flatListRef}
-        data={containerCarousel}
+        data={cardsDetails}
         renderItem={({ item }) => <CarouselCards key={item.id} img={item.img} />}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         decelerationRate={'fast'}
+        contentContainerClassName='pr-3 gap-1 py-5'
       />
     </View>
   )

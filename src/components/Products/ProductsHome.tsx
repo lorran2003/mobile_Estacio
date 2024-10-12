@@ -21,8 +21,11 @@ export function ProductsHome() {
                 </View>
             </Link>
 
-            <CarouselProducts />
-            
+            { /* componente quebrado
+                <CarouselProducts /> */
+            }
+
+
         </View>
     )
 }

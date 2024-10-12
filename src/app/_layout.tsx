@@ -5,13 +5,13 @@ import { ScrollView, View } from "react-native";
 import { NavBar } from "../components/NavBar";
 
 import '../style/global.css'
+import { Footer } from "../components/Footer";
 
 
 const statusBarHeigth = Constants.statusBarHeight;
 
 export default function RootLayout() {
 
-  setStatusBarBackgroundColor('rgb(63 63 70)', true);
   
   return (
     <ScrollView className="bg-neutral-200 flex-1">

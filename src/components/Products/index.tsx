@@ -10,7 +10,7 @@ export function ProductsHome() {
             <Text className='text-[##CA9D37] text-4xl font-bold'>Nossos produtos</Text>
 
             <View className='flex-row justify-center items-center gap-1'>
-                <Link href={"/"}>
+                <Link href={'/products'}>
                     <Text className='underline'>
                         Ver todos os produtos
                     </Text>

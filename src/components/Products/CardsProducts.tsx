@@ -33,7 +33,7 @@ export function CardsProducts({ cardsDetails }: { cardsDetails: CardsType }) {
                 <Text className='opacity-80'>R$ {cardsDetails.id}</Text>
             </View>
 
-            <View className='flex-row w-full items-end justify-center' >
+            <View className='flex-row w-full items-end justify-end gap-1' >
 
                 <Pressable onPress={() => favoriteProducts()}>
 

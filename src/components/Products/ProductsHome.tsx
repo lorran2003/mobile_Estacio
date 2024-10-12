@@ -8,7 +8,7 @@ import { CarouselProducts } from './CarouselProducts'
 
 export function ProductsHome() {
     return (
-        <View className='justify-center items-center gap-3'>
+        <View className='justify-center items-center gap-3 pt-10'>
 
             <Text className='text-[##CA9D37] text-4xl font-bold'>Nossos produtos</Text>
 

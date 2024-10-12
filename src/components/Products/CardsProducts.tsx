@@ -5,7 +5,6 @@ import { CardsType } from '../Carousel/Carousel'
 
 
 export function CardsProducts({ cardsDetails }: { cardsDetails: CardsType }) {
-    console.log(cardsDetails)
 
     const [iconHeart, setIconHeart] = useState<any>(<AntDesign name="hearto" size={24} color="black" />);
 
@@ -31,7 +30,7 @@ export function CardsProducts({ cardsDetails }: { cardsDetails: CardsType }) {
             <View className='w-full justify-center items-start'>
                 <Text className='font-semibold text-xl'>{'Ola mundo'}</Text>
 
-                <Text className='opacity-80'>R$ {'00.00'}</Text>
+                <Text className='opacity-80'>R$ {cardsDetails.id}</Text>
             </View>
 
             <View className='flex-row w-full items-end justify-center' >

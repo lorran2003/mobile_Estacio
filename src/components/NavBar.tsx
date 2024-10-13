@@ -19,9 +19,11 @@ export function NavBar() {
                     <AntDesign name="user" size={24} color="black" />
                 </Pressable>
 
-                <Pressable className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>
-                    <AntDesign name="shoppingcart" size={24} color="black" />
-                </Pressable>
+                <Link href={'/cart'}>
+                    <View className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>
+                        <AntDesign name="shoppingcart" size={24} color="black" />
+                    </View>
+                </Link>
 
                 <Pressable className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>
                     <Ionicons name="menu-outline" size={24} color="black" />

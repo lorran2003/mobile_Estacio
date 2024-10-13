@@ -15,7 +15,7 @@ export function Footer() {
 
             </View>
             
-            <View className='flex-row w-fit gap-5'>
+            <View className='flex-row gap-5'>
                 <AntDesign name="instagram" size={24} color="black" />
                 <FontAwesome name="whatsapp" size={24} color="black" />
             </View>

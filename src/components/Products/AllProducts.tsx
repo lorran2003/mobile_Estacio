@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import { View, Text } from 'react-native'
 import { cardsDetails, CardsType } from '../Carousel/Carousel'
 import { CardsProducts } from './CardsProducts'
+import { PageNavigation } from './PageNavigation';
 
 export default function AllProducts() {
-    const [products, setProducts] = useState<CardsType[]>([])
+    const [products, setProducts] = useState<CardsType[]>([]);
 
     useEffect(() => {
         setProducts(cardsDetails)
-    })
+    });
 
     return (
         <View className='gap-5'>
@@ -22,11 +23,13 @@ export default function AllProducts() {
             
             </View>
 
-            <View className='w-full h-full justify-center items-center gap-5 flex-row flex-wrap'>
+            <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
                 {
                     products.map((item) => <CardsProducts key={item.id} cardsDetails={item} />)
                 }
             </View>
+
+            <PageNavigation />
             
         </View>
     )

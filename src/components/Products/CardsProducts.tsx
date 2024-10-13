@@ -20,11 +20,11 @@ export function CardsProducts({ cardsDetails }: { cardsDetails: CardsType }) {
     };
 
     return (
-        <View className='p-2 bg-zinc-50 rounded-md w-5/12 h-fit justify-center items-center'>
+        <View className='p-2 bg-zinc-50 rounded-md w-5/12 justify-center items-center'>
 
             <Image
                 source={cardsDetails.img}
-                className='w-full h-48 object-cover rounded-md'
+                className='w-full h-48 rounded-md'
             />
 
             <View className='w-full justify-center items-start'>

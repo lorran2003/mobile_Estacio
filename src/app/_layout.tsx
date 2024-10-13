@@ -1,11 +1,10 @@
 import { Slot } from "expo-router";
-import { setStatusBarBackgroundColor, setStatusBarStyle } from "expo-status-bar";
 import Constants from 'expo-constants'
 import { ScrollView, View } from "react-native";
 import { NavBar } from "../components/NavBar";
+import { Footer } from "../components/Footer";
 
 import '../style/global.css'
-import { Footer } from "../components/Footer";
 
 
 const statusBarHeigth = Constants.statusBarHeight;
@@ -18,6 +17,7 @@ export default function RootLayout() {
       <View style={{ marginTop: statusBarHeigth }}>
         <NavBar />
         <Slot />
+        <Footer />
       </View>
     </ScrollView>
   );

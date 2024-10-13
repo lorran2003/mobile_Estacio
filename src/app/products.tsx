@@ -4,9 +4,8 @@ import { Footer } from '../components/Footer'
 
 export default function Products() {
   return (
-    <View className='w-full h-full'>
+    <View className='w-full'>
         <AllProducts />
-        <Footer />
     </View>
   )
 }

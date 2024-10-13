@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Image } from 'react-native'
+import { View, Pressable, Image } from 'react-native'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import { Link } from 'expo-router'
 

@@ -1,5 +1,5 @@
 import { AntDesign } from '@expo/vector-icons'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { View, Text, Pressable, Image } from 'react-native'
 import { CardsType } from '../Carousel/Carousel'
 

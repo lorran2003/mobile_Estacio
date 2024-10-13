@@ -1,13 +1,13 @@
-import { Footer } from '@/src/components/Footer'
-import { NavBar } from '@/src/components/NavBar'
-import { RegisterUser } from '@/src/components/User/Register'
 import React from 'react'
+import { Footer } from '@/src/components/Footer'
+import { ProfileUser } from '@/src/components/User/Profile'
+import { NavBar } from '@/src/components/NavBar'
 
-export default function Register() {
+export default function Profile() {
     return (
         <>
             <NavBar />
-            <RegisterUser />
+            <ProfileUser />
             <Footer />
         </>
     )

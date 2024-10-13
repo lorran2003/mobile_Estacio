@@ -2,7 +2,7 @@ import { Href, Link } from 'expo-router'
 import React from 'react'
 import { Text, Pressable } from 'react-native'
 
-export function UserSubmit({ title, text, router }: { title: string, text: string, router: Href }) {
+export function UserSubmit({ title, text, router }: { title: string, text?: string, router: Href }) {
     return (
         <>
             <Pressable className='bg-[#CA9D37] rounded-md py-2 px-8'>

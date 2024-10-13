@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { cardsDetails, CardsType } from '../Carousel/Carousel'
 import { CardsProducts } from './CardsProducts'
 import { PageNavigation } from './PageNavigation';

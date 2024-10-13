@@ -14,9 +14,23 @@ export function Footer() {
                 >
                     favoritos
                 </Link>
-                <Text className='text-zinc-800/70'>carrinho</Text>
+               
+                <Link
+                    href={'/cart'}
+                    className='text-zinc-800/70'
+                >
+                    Carrinho
+                </Link>
+
                 <Text className='text-zinc-800/70'>promos</Text>
-                <Text className='text-zinc-800/70'>minha conta</Text>
+
+                <Link
+                    href={'/(user)/profile'}
+                    className='text-zinc-800/70'
+                >
+                    minha conta
+                </Link>
+                
                 <Text className='text-zinc-800/70'>ajuda</Text>
 
             </View>

@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import { cardsDetails, CardsType } from '../Carousel/Carousel'
 import { CardsProducts } from './CardsProducts'
 import { PageNavigation } from './PageNavigation';
+import { TitlePages } from '../TitlePages';
 
 export default function AllProducts() {
     const [products, setProducts] = useState<CardsType[]>([]);
@@ -13,15 +14,8 @@ export default function AllProducts() {
 
     return (
         <View className='gap-5'>
-            <View className='bg-zinc-50 p-5'>
-
-                <Text className='text-[##CA9D37] text-4xl font-bold'>
-                    Nossos produtos
-                </Text>
-                
-                <Text className='text-zinc-800/80'>total de ({products.length})</Text>
             
-            </View>
+          <TitlePages title='Nossos produtos' numberProducts={cardsDetails.length}/>
 
             <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
                 {

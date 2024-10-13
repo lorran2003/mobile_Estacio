@@ -6,17 +6,17 @@ import { CardsType } from '../Carousel/Carousel'
 
 export function CardsProducts({ cardsDetails }: { cardsDetails: CardsType }) {
 
-    const [iconHeart, setIconHeart] = useState<any>(<AntDesign name="hearto" size={24} color="black" />);
+    const [iconHeart, setIconHeart] = useState<any>(<AntDesign name="hearto" size={20} color="black" />);
 
     const [favorite, setFavorite] = useState<boolean>(true);
 
     const favoriteProducts = () => {
         if (favorite) {
             setFavorite(false);
-            return setIconHeart(<AntDesign name="heart" size={24} color="red" />);
+            return setIconHeart(<AntDesign name="heart" size={20} color="red" />);
         }
         setFavorite(true);
-        setIconHeart(<AntDesign name="hearto" size={24} color="black" />)
+        setIconHeart(<AntDesign name="hearto" size={20} color="black" />)
     };
 
     return (
@@ -33,7 +33,7 @@ export function CardsProducts({ cardsDetails }: { cardsDetails: CardsType }) {
                 <Text className='opacity-80'>R$ {cardsDetails.id}</Text>
             </View>
 
-            <View className='flex-row w-full items-end justify-end gap-1' >
+            <View className='flex-row w-full items-center justify-end gap-2' >
 
                 <Pressable onPress={() => favoriteProducts()}>
 
@@ -41,9 +41,9 @@ export function CardsProducts({ cardsDetails }: { cardsDetails: CardsType }) {
 
                 </Pressable>
 
-                <Pressable className='bg-[##CA9D37] rounded-3xl p-2'>
+                <Pressable className='bg-[##CA9D37] rounded-full p-2'>
 
-                    <Text className='text-zinc-800'>Comprar</Text>
+                    <Text className='text-zinc-50'>Comprar</Text>
 
                 </Pressable>
             </View>

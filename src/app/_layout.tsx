@@ -11,13 +11,10 @@ const statusBarHeigth = Constants.statusBarHeight;
 
 export default function RootLayout() {
 
-  
   return (
     <ScrollView className="bg-neutral-200 flex-1">
       <View style={{ marginTop: statusBarHeigth }}>
-        <NavBar />
         <Slot />
-        <Footer />
       </View>
     </ScrollView>
   );

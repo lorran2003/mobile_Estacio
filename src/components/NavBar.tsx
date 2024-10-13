@@ -15,9 +15,12 @@ export function NavBar() {
             </Link>
 
             <View className='flex-row gap-2'>
-                <Pressable className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>
-                    <AntDesign name="user" size={24} color="black" />
-                </Pressable>
+
+                <Link href={'(user)/login'}>
+                    <View className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>
+                        <AntDesign name="user" size={24} color="black" />
+                    </View>
+                </Link>
 
                 <Link href={'/cart'}>
                     <View className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>

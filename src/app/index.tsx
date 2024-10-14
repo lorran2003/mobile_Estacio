@@ -4,24 +4,42 @@ import { ProductsHome } from "../components/Products/ProductsHome";
 import { setStatusBarBackgroundColor } from "expo-status-bar";
 import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
+import { PropsAPI } from "../type/typeAPI";
+import { getProducts } from "../API/getProducts";
 
 export default function Index() {
 
+  const [dataAPI, setDataAPI] = useState<PropsAPI[]>([]);
+
   useEffect(() => {
+
     setStatusBarBackgroundColor('rgb(63 63 70)', true);
-  })
+
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setDataAPI(data);
+      }
+      catch (err) {
+        console.error('Erros ao buscar produtos: ' + err);
+      }
+    }
+
+    fetchProducts();
+
+  }, [])
 
   return (
     <>
       <NavBar />
       <Banner image={require('../assets/images/banner.png')} />
-      <Carousel />
+      <Carousel dataProducts={dataAPI} />
       <ProductsHome />
       <Banner image={require('../assets/images/bannerOferta.png')} />
       <Footer />
     </>
-    
+
   );
 }

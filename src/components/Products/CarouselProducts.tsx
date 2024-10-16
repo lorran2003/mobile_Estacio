@@ -1,49 +1,65 @@
 import { View } from 'react-native';
-import PagerView from 'react-native-pager-view';
-import { cardsDetails, CardsType } from '../Carousel/Carousel';
 import { CardsProducts } from './CardsProducts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet } from 'nativewind';
+import { PropsAPI } from '@/src/type/typeAPI';
 
-const numberViewComponents: null[] = new Array(Math.ceil(cardsDetails.length / 4)).fill(null);
+let currentIndex: number = 0;
 
-const gerenateFourCards = (starIndex: number): CardsType[] => {
+export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] }) {
 
-  const arrayFourCards: CardsType[] = [];
+  const [cards, setCards] = useState<PropsAPI[]>(dataProducts.filter((_, index) => index < 4));
 
-  for (let index = 0; index < 4; index++) {
+  useEffect(() => {
 
-    const cardIndex = starIndex + index;
+    try {
 
-    if (cardIndex < cardsDetails.length) {
-      arrayFourCards.push(cardsDetails[cardIndex]);
-      continue;
+      const interval = setInterval(() => {
+
+        const arrayProducts: PropsAPI[] = new Array();
+
+        if (currentIndex < dataProducts.length  && currentIndex != 0) {
+
+          for (let index = 0; index < 4; index++) {
+
+            arrayProducts.push(dataProducts[currentIndex]);
+            currentIndex++;
+
+          }
+
+          setCards(arrayProducts);
+
+        } else {
+
+          currentIndex = 0;
+
+          for (let index = 0; index < 4; index++) {
+
+            arrayProducts.push(dataProducts[currentIndex]);
+            currentIndex++;
+
+          }
+
+          setCards(arrayProducts);
+        }
+
+      }, 5000)
+
+      return () => clearInterval(interval);
+
+    } catch (err) {
+      return (console.error('deu merda : ' + err))
     }
-  }
-
-  return arrayFourCards;
-}
-
-export function CarouselProducts() {
-
-  const [cards, setCards] = useState<CardsType[]>(gerenateFourCards(0))
+  })
 
   return (
-    <PagerView
-      initialPage={0}
-      style={style.pagerView}
-    >
-      {
-        numberViewComponents.map((_, index) =>
 
-          <View key={index} className='w-full h-full justify-center items-center gap-5 flex-row flex-wrap'>
-            {
-              cards.map((item) => <CardsProducts key={item.id} cardsDetails={item} />)
-            }
-          </View>
-        )
+    <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
+      {
+        cards.map((item) => <CardsProducts key={item.id} cardsDetails={item} />)
       }
-    </PagerView>
+    </View>
+
   )
 }
 

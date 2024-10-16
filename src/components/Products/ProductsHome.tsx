@@ -2,8 +2,9 @@ import { AntDesign } from '@expo/vector-icons'
 import { Link } from 'expo-router'
 import { View, Text } from 'react-native'
 import { CarouselProducts } from './CarouselProducts'
+import { PropsAPI } from '@/src/type/typeAPI'
 
-export function ProductsHome() {
+export function ProductsHome({ dataProducts }: { dataProducts: PropsAPI[] }) {
     return (
         <View className='justify-center items-center gap-3 pb-5 w-full'>
 
@@ -18,7 +19,7 @@ export function ProductsHome() {
                 </View>
             </Link>
 
-            <CarouselProducts />
+            <CarouselProducts dataProducts={dataProducts} />
 
         </View>
     )

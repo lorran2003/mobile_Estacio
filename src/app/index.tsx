@@ -36,7 +36,7 @@ export default function Index() {
       <NavBar />
       <Banner image={require('../assets/images/banner.png')} />
       <Carousel dataProducts={dataAPI} />
-      <ProductsHome />
+      <ProductsHome dataProducts={dataAPI} />
       <Banner image={require('../assets/images/bannerOferta.png')} />
       <Footer />
     </>

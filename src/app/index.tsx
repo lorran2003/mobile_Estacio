@@ -11,20 +11,18 @@ import { getProducts } from "../API/getProducts";
 
 export default function Index() {
 
-  const [dataAPI, setDataAPI] = useState<PropsAPI[]>([]);
+  const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
 
   useEffect(() => {
 
     setStatusBarBackgroundColor('rgb(63 63 70)', true);
 
     const fetchProducts = async () => {
-      try {
-        const data = await getProducts();
-        data ? setDataAPI(data) : null ; 
-      }
-      catch (err) {
-        console.error('Erros ao buscar produtos: ' + err);
-      }
+
+      const data = await getProducts();
+      
+      data ? setDataProductsAPI(data) : null;
+
     }
 
     fetchProducts();
@@ -35,8 +33,8 @@ export default function Index() {
     <>
       <NavBar />
       <Banner image={require('../assets/images/banner.png')} />
-      <Carousel dataProducts={dataAPI} />
-      <ProductsHome dataProducts={dataAPI} />
+      <Carousel dataProducts={dataProductsAPI} />
+      <ProductsHome dataProducts={dataProductsAPI} />
       <Banner image={require('../assets/images/bannerOferta.png')} />
       <Footer />
     </>

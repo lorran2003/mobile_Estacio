@@ -4,14 +4,26 @@ import { cardsDetails, CardsType } from '../Carousel/Carousel';
 import { TitlePages } from '../TitlePages';
 import { PageNavigation } from '../Products/PageNavigation';
 import { CardsProducts } from '../Products/CardsProducts';
+import { PropsAPI } from '@/src/type/typeAPI';
+import { getProducts } from '@/src/API/getProducts';
 
 export function Index() {
 
-    const [products, setProducts] = useState<CardsType[]>([]);
+    const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
 
     useEffect(() => {
-        setProducts(cardsDetails)
-    });
+  
+      const fetchProducts = async () => {
+  
+        const data = await getProducts();
+        
+        data ? setDataProductsAPI(data) : null;
+  
+      }
+  
+      fetchProducts();
+  
+    }, [])
 
     return (
         <View className='gap-5 justify-center items-center'>
@@ -20,7 +32,7 @@ export function Index() {
 
             <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
                 {
-                    products.map((item) => <CardsProducts key={item.id} cardsDetails={item} />)
+                    dataProductsAPI.map((item) => <CardsProducts key={item.id} product={item} />)
                 }
             </View>
 

@@ -13,53 +13,48 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
   useEffect(() => {
 
-    try {
+    const interval = setInterval(() => {
 
-      const interval = setInterval(() => {
+      const arrayProducts: PropsAPI[] = new Array();
 
-        const arrayProducts: PropsAPI[] = new Array();
+      if (currentIndex < dataProducts.length && currentIndex != 0) {
 
-        if (currentIndex < dataProducts.length  && currentIndex != 0) {
+        for (let index = 0; index < 4; index++) {
 
-          for (let index = 0; index < 4; index++) {
+          arrayProducts.push(dataProducts[currentIndex]);
+          currentIndex++;
 
-            arrayProducts.push(dataProducts[currentIndex]);
-            currentIndex++;
-
-          }
-
-          setCards(arrayProducts);
-
-        } else {
-
-          currentIndex = 0;
-
-          for (let index = 0; index < 4; index++) {
-
-            arrayProducts.push(dataProducts[currentIndex]);
-            currentIndex++;
-
-          }
-
-          setCards(arrayProducts);
         }
 
-      }, 5000)
+        setCards(arrayProducts);
 
-      return () => clearInterval(interval);
+      } else {
 
-    } catch (err) {
-      return (console.error('deu merda : ' + err))
-    }
+        currentIndex = 0;
+
+        for (let index = 0; index < 4; index++) {
+
+          arrayProducts.push(dataProducts[currentIndex]);
+          currentIndex++;
+
+        }
+
+        setCards(arrayProducts);
+      }
+
+    }, 5000)
+
+    return () => clearInterval(interval);
+
   })
 
   return (
 
     <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
       {
-        dataProducts.length > 1 ? 
-        cards.map((item) => <CardsProducts key={item.id} cardsDetails={item} />) :
-        <NotfoundProducts />
+        dataProducts.length > 1 ?
+          cards.map((item) => <CardsProducts key={item.id} product={item} />) :
+          <NotfoundProducts />
       }
     </View>
 

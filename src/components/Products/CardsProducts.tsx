@@ -1,12 +1,24 @@
+import { AntDesign } from '@expo/vector-icons'
 import { useState } from 'react'
 import { View, Text, Pressable, Image } from 'react-native'
 import { PropsAPI } from '@/src/type/typeAPI';
-import { favoriteProducts } from '@/src/func/favorite';
 
 
 export function CardsProducts({ cardsDetails }: { cardsDetails: PropsAPI }) {
 
-    const [iconHeart, setIconHeart] = useState<any>(favoriteProducts());
+
+    const [iconHeart, setIconHeart] = useState<any>(<AntDesign name="hearto" size={20} color="black" />);
+
+    const [favorite, setFavorite] = useState<boolean>(true);
+
+    const favoriteProducts = () => {
+        if (favorite) {
+            setFavorite(false);
+            return setIconHeart(<AntDesign name="heart" size={20} color="red" />);
+        }
+        setFavorite(true);
+        setIconHeart(<AntDesign name="hearto" size={20} color="black" />)
+    };
 
     return (
         <View className='p-2 bg-zinc-50 rounded-md w-5/12 justify-center items-center'>
@@ -29,7 +41,7 @@ export function CardsProducts({ cardsDetails }: { cardsDetails: PropsAPI }) {
 
             <View className='flex-row w-full items-center justify-end gap-2' >
 
-                <Pressable onPress={() => setIconHeart(favoriteProducts())}>
+                <Pressable onPress={() => favoriteProducts()}>
 
                     {iconHeart}
 

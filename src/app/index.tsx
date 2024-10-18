@@ -20,7 +20,7 @@ export default function Index() {
     const fetchProducts = async () => {
       try {
         const data = await getProducts();
-        setDataAPI(data);
+        data ? setDataAPI(data) : null ; 
       }
       catch (err) {
         console.error('Erros ao buscar produtos: ' + err);

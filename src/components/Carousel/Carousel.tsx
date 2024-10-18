@@ -58,7 +58,9 @@ export function Carousel({ dataProducts }: { dataProducts: PropsAPI[] }) {
 
   return (
     <View className='py-5'>
-      <FlatList
+      {
+        dataProducts.length > 1 ?
+        <FlatList
         ref={flatListRef}
         data={products}
         renderItem={({ item }) => <CarouselCards key={item.id} image={item.image} />}
@@ -66,7 +68,9 @@ export function Carousel({ dataProducts }: { dataProducts: PropsAPI[] }) {
         showsHorizontalScrollIndicator={false}
         decelerationRate={'fast'}
         contentContainerStyle={style.flatList}
-      />
+        /> :
+        null
+      }
     </View>
   )
 }

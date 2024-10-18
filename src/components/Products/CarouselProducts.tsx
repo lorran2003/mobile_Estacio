@@ -3,6 +3,7 @@ import { CardsProducts } from './CardsProducts';
 import { useEffect, useState } from 'react';
 import { StyleSheet } from 'nativewind';
 import { PropsAPI } from '@/src/type/typeAPI';
+import NotfoundProducts from './NotfoundProducts';
 
 let currentIndex: number = 0;
 
@@ -56,7 +57,9 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
     <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
       {
-        cards.map((item) => <CardsProducts key={item.id} cardsDetails={item} />)
+        dataProducts.length > 1 ? 
+        cards.map((item) => <CardsProducts key={item.id} cardsDetails={item} />) :
+        <NotfoundProducts />
       }
     </View>
 

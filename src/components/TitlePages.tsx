@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 
-export function TitlePages({ title, numberProducts, textElement }: { title: string, numberProducts?: number, textElement?: boolean}) {
+export function TitlePages({ title, numberProducts, textElement }: { title: string, numberProducts?: number, textElement?: boolean }) {
     return (
         <View className='bg-zinc-50 w-full p-6 '>
 

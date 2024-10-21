@@ -1,15 +1,19 @@
 import { View } from 'react-native';
 import { CardsProducts } from './CardsProducts';
 import { useEffect, useState } from 'react';
-import { StyleSheet } from 'nativewind';
 import { PropsAPI } from '@/src/type/typeAPI';
 import NotfoundProducts from './NotfoundProducts';
+import { ModalBuy } from '../ModalBuy';
 
 let currentIndex: number = 0;
 
 export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] }) {
 
   const [cards, setCards] = useState<PropsAPI[]>(dataProducts.filter((_, index) => index < 4));
+
+  const [visible, setVisible] = useState<boolean>(false);
+
+  const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
 
@@ -46,25 +50,32 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
     return () => clearInterval(interval);
 
-  })
+  });
 
-  return (
+  const openModal = (index: number) => {
+    setIndex(index);
+    setVisible(true);
+  }
+  const closeModal = () => {
+    setVisible(false);
+  }
 
-    <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
-      {
-        dataProducts.length > 1 ?
-          cards.map((item) => <CardsProducts key={item.id} product={item} />) :
-          <NotfoundProducts />
-      }
-    </View>
+  if (cards.length > 1) {
 
-  )
+    return (
+
+      <View className={'w-full ' + (visible ? ' blur-sm ' : null)}>
+
+        <ModalBuy product={cards[index]} visible={visible} closeModal={closeModal} />
+
+        <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
+          {
+            cards.map((item, index) => <CardsProducts key={item.id} product={item} openModal={openModal} index={index} />)
+          }
+        </View>
+      </View>
+
+    )
+  } 
+  return <NotfoundProducts /> ;
 }
-
-const style = StyleSheet.create({
-  pagerView: {
-    flex: 1,
-    height: 540,
-    width: '100%',
-  },
-})

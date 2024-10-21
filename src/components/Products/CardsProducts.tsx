@@ -6,7 +6,7 @@ import { addProductsFavoriteList, arrayFav } from '@/src/API/postProduct';
 import { removeProductsFavoriteList } from '@/src/API/deleteProduct';
 
 
-export function CardsProducts({ product }: { product: PropsAPI }) {
+export function CardsProducts({ product, openModal, index }: { product: PropsAPI, openModal: (index : number) => void, index: number }) {
 
     let favorite: boolean = arrayFav.some(item => item.id === product.id);
 
@@ -66,7 +66,10 @@ export function CardsProducts({ product }: { product: PropsAPI }) {
 
                 </Pressable>
 
-                <Pressable className='bg-[##CA9D37] rounded-full p-2'>
+                <Pressable
+                    className='bg-[##CA9D37] rounded-full p-2'
+                    onPress={() => openModal(index)}
+                >
 
                     <Text className='text-zinc-50'>Comprar</Text>
 

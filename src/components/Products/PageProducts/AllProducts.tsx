@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { cardsDetails, CardsType } from '../Carousel/Carousel'
-import { CardsProducts } from './CardsProducts'
-import { PageNavigation } from './PageNavigation';
-import { TitlePages } from '../TitlePages';
+import { cardsDetails, CardsType } from '../../Carousel/Carousel'
+import { CardsProducts } from '../Cards/CardsProducts'
+import { PageNavigation } from '../Navigation/PageNavigation';
+import { TitlePages } from '../../TitlePages';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { getProducts } from '@/src/API/getProducts';
-import { ModalBuy } from '../ModalBuy';
+import { ModalBuy } from '../../ModalBuy';
 
 export function AllProducts() {
 

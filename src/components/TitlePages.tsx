@@ -9,7 +9,6 @@ export function TitlePages({ title, numberProducts, textElement }: { title: stri
             </Text>
             {
                 textElement ? <Text className='text-zinc-800/50 '>total de ({numberProducts})</Text> : null
-
             }
 
         </View>

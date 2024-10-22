@@ -1,8 +1,8 @@
 import { View, Text, Pressable } from 'react-native'
 import { useEffect, useState } from 'react';
 import { TitlePages } from '../TitlePages';
-import { CardsProducts } from '../Products/CardsProducts';
-import { PageNavigation } from '../Products/PageNavigation';
+import { CardsProducts } from '../Products/Cards/CardsProducts';
+import { PageNavigation } from '../Products/Navigation/PageNavigation';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { arrayFav } from '@/src/API/favoriteProducts/addFavorite';
 import { ModalBuy } from '../ModalBuy';

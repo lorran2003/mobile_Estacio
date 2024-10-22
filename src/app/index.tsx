@@ -1,6 +1,6 @@
 import { Banner } from "../components/Banner";
 import { Carousel } from "../components/Carousel/Carousel";
-import { ProductsHome } from "../components/Products/ProductsHome";
+import { ProductsHome } from "../components/Products/ProductsHomePage/ProductsHome";
 import { setStatusBarBackgroundColor } from "expo-status-bar";
 import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";

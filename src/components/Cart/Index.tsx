@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { View, Text, Pressable } from 'react-native'
 import { cardsDetails, CardsType } from '../Carousel/Carousel';
 import { TitlePages } from '../TitlePages';
-import { PageNavigation } from '../Products/PageNavigation';
-import { CardsProducts } from '../Products/CardsProducts';
+import { PageNavigation } from '../Products/Navigation/PageNavigation';
+import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { getProducts } from '@/src/API/getProducts';
 import { arrayCart } from '@/src/API/cart/addCart';

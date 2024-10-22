@@ -19,34 +19,37 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
     const interval = setInterval(() => {
 
-      const arrayProducts: PropsAPI[] = new Array();
+      if (!visible) {
 
-      if (currentIndex < dataProducts.length && currentIndex != 0) {
+        const arrayProducts: PropsAPI[] = new Array();
 
-        for (let index = 0; index < 4; index++) {
+        if (currentIndex < dataProducts.length && currentIndex != 0) {
 
-          arrayProducts.push(dataProducts[currentIndex]);
-          currentIndex++;
+          for (let index = 0; index < 4; index++) {
 
+            arrayProducts.push(dataProducts[currentIndex]);
+            currentIndex++;
+
+          }
+
+          setCards(arrayProducts);
+
+        } else {
+
+          currentIndex = 0;
+
+          for (let index = 0; index < 4; index++) {
+
+            arrayProducts.push(dataProducts[currentIndex]);
+            currentIndex++;
+
+          }
+
+          setCards(arrayProducts);
         }
-
-        setCards(arrayProducts);
-
-      } else {
-
-        currentIndex = 0;
-
-        for (let index = 0; index < 4; index++) {
-
-          arrayProducts.push(dataProducts[currentIndex]);
-          currentIndex++;
-
-        }
-
-        setCards(arrayProducts);
       }
 
-    }, 5000)
+    }, 5000);
 
     return () => clearInterval(interval);
 
@@ -60,7 +63,7 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
     setVisible(false);
   }
 
-  if (cards.length > 1) {
+  if (cards.length > 0) {
 
     return (
 
@@ -76,6 +79,6 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
       </View>
 
     )
-  } 
-  return <NotfoundProducts /> ;
+  }
+  return <NotfoundProducts />;
 }

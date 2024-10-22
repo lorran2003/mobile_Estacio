@@ -1,5 +1,5 @@
-import { PropsAPI } from "../type/typeAPI";
-import { arrayFav } from "./postProduct";
+import { PropsAPI } from "../../type/typeAPI";
+import { arrayFav } from "./addFavorite";
 
 export const removeProductsFavoriteList = async ({ product }: { product: PropsAPI }) => {
     try {
@@ -14,7 +14,10 @@ export const removeProductsFavoriteList = async ({ product }: { product: PropsAP
     
         // return data;
 
-        arrayFav.slice();
+        arrayFav.forEach((item, index) => {
+            item.id === product.id ? arrayFav.splice(index) : null ; 
+        });
+        console.log(arrayFav);
         return;
     }
     catch {

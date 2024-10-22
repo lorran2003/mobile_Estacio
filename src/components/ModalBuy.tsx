@@ -2,8 +2,26 @@ import { View, Text, Modal, Image, Pressable } from 'react-native'
 import { PropsAPI } from '../type/typeAPI';
 import { TitlePages } from './TitlePages';
 import { AntDesign } from '@expo/vector-icons';
+import { addCart } from '../API/cart/addCart';
 
-export function ModalBuy({ product, visible, closeModal }: { product: PropsAPI, visible: boolean, closeModal: () => void }) {
+interface PropsModalBuy {
+  product: PropsAPI;
+  visible: boolean;
+  closeModal: () => void;
+}
+
+export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
+
+  const addProductToCart = async ({ product }: { product: PropsAPI }) => {
+    try {
+
+      await addCart({ product });
+      closeModal();
+    
+    } catch (error) {
+      console.error("Erro ao adicionar ao carrinho : " + error);
+    }
+  }
 
   return (
     <Modal
@@ -68,7 +86,10 @@ export function ModalBuy({ product, visible, closeModal }: { product: PropsAPI, 
 
               <View className='gap-2' >
 
-                <Pressable className='bg-zinc-800 rounded-md p-3 flex-row gap-2 justify-center items-center'>
+                <Pressable
+                  className='bg-zinc-800 rounded-md p-3 flex-row gap-2 justify-center items-center'
+                  onPress={() => addProductToCart({ product })}
+                >
                   <Text className='text-zinc-50'>Adicionar</Text>
                   <AntDesign name="shoppingcart" size={24} color="white" />
                 </Pressable>
@@ -78,7 +99,6 @@ export function ModalBuy({ product, visible, closeModal }: { product: PropsAPI, 
                 </Pressable>
 
               </View>
-
             </View>
           </View>
         </View>

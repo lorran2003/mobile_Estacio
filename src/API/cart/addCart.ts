@@ -1,8 +1,9 @@
-import { PropsAPI } from "../type/typeAPI";
+import { PropsAPI } from '../../type/typeAPI';
 
-export let arrayFav: PropsAPI[] = new Array();
 
-export const addProductsFavoriteList = async ({ product }: { product: PropsAPI }) => {
+export const arrayCart: PropsAPI[] = new Array();
+
+export const addCart = async ({ product }: { product: PropsAPI }) => {
     try {
         
         // const url: URL = new URL('http://192.168.1.245:3000/products');
@@ -15,8 +16,9 @@ export const addProductsFavoriteList = async ({ product }: { product: PropsAPI }
     
         // return data;
 
-        arrayFav.push(product);
-        return;
+        arrayCart.push(product);
+        console.log(arrayCart);
+        return ;
     }
     catch {
 

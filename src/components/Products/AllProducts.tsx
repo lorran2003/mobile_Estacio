@@ -6,39 +6,57 @@ import { PageNavigation } from './PageNavigation';
 import { TitlePages } from '../TitlePages';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { getProducts } from '@/src/API/getProducts';
+import { ModalBuy } from '../ModalBuy';
 
-export default function AllProducts() {
+export function AllProducts() {
 
-    const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
+  const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
 
-    useEffect(() => {
-    
-      const fetchProducts = async () => {
-  
-        const data = await getProducts();
-        
-        data ? setDataProductsAPI(data) : null;
-  
-      }
-  
-      fetchProducts();
-  
-    }, [])
+  const [visible, setVisible] = useState<boolean>(false);
 
+  const [index, setIndex] = useState<number>(0);
+
+  useEffect(() => {
+
+    const fetchProducts = async () => {
+
+      const data = await getProducts();
+
+      data ? setDataProductsAPI(data) : null;
+
+    }
+
+    fetchProducts();
+
+  }, [])
+
+
+  const openModal = (index: number) => {
+    setIndex(index);
+    setVisible(true);
+  }
+  const closeModal = () => {
+    setVisible(false);
+  }
+
+  if (dataProductsAPI.length > 0) {
 
     return (
-        <View className='gap-5'>
-            
-          <TitlePages title='Nossos produtos' numberProducts={cardsDetails.length}/>
+      <View className='gap-5'>
 
-            <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
-                {
-                    dataProductsAPI.map((item) => <CardsProducts key={item.id} product={item} />)
-                }
-            </View>
+        <TitlePages title='Nossos produtos' numberProducts={cardsDetails.length} />
 
-            <PageNavigation />
-            
+        <ModalBuy product={dataProductsAPI[index]} visible={visible} closeModal={closeModal} />
+
+        <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
+          {
+            dataProductsAPI.map((item, index) => <CardsProducts key={item.id} product={item} index={index} openModal={openModal} />)
+          }
         </View>
+
+        <PageNavigation />
+
+      </View>
     )
+  }
 }

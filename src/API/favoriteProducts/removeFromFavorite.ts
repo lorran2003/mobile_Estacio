@@ -1,9 +1,7 @@
-import { PropsAPI } from '../../type/typeAPI';
+import { PropsAPI } from "../../type/typeAPI";
+import { arrayFav } from "./addFromFavorite";
 
-
-export const arrayCart: PropsAPI[] = new Array();
-
-export const addCart = async ({ product }: { product: PropsAPI }) => {
+export const removeProductsFavoriteList = async ({ product }: { product: PropsAPI }) => {
     try {
         
         // const url: URL = new URL('http://192.168.1.245:3000/products');
@@ -16,9 +14,11 @@ export const addCart = async ({ product }: { product: PropsAPI }) => {
     
         // return data;
 
-        arrayCart.push(product);
-        console.log(arrayCart);
-        return ;
+        arrayFav.forEach((item, index) => {
+            item.id === product.id ? arrayFav.splice(index) : null ; 
+        });
+        console.log(arrayFav);
+        return;
     }
     catch {
 

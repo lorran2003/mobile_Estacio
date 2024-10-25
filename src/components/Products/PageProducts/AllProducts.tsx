@@ -27,8 +27,6 @@ export function AllProducts({ products }: { products: PropsAPI[] }) {
     return (
       <View className='gap-5'>
 
-        <TitlePages title='Nossos produtos' numberProducts={cardsDetails.length} />
-
         <ModalBuy product={products[index]} visible={visible} closeModal={closeModal} />
 
         <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>

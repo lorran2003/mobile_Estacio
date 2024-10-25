@@ -1,5 +1,5 @@
 import { PropsAPI } from "@/src/type/typeAPI";
-import { arrayFav } from "./addFromFavorite";
+import { arrayCart } from "./addFromCart";
 
 
 export const getFavoriteProducts = async () => {
@@ -14,7 +14,7 @@ export const getFavoriteProducts = async () => {
     
     const data: PropsAPI[] = await response.json();
 
-    return arrayFav;
+    return arrayCart;
 
   } catch (error) {
 

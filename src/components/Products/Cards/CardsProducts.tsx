@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { View, Text, Pressable, Image, Modal } from 'react-native'
 import { PropsAPI } from '@/src/type/typeAPI';
 import { AntDesign } from '@expo/vector-icons';
-import { addProductsFavoriteList, arrayFav } from '@/src/API/favoriteProducts/addFavorite';
-import { removeProductsFavoriteList } from '@/src/API/favoriteProducts/removeFavorite';
+import { addProductsFavoriteList, arrayFav } from '@/src/API/favoriteProducts/addFromFavorite';
+import { removeProductsFavoriteList } from '@/src/API/favoriteProducts/removeFromFavorite';
 
 interface PropsCardsProducts {
     product: PropsAPI;

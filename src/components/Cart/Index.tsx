@@ -6,7 +6,7 @@ import { PageNavigation } from '../Products/Navigation/PageNavigation';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { getProducts } from '@/src/API/getProducts';
-import { arrayCart } from '@/src/API/cart/addCart';
+import { arrayCart } from '@/src/API/cart/addFromCart';
 import { ModalBuy } from '../ModalBuy';
 
 export function Index() {

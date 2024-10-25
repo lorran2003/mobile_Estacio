@@ -42,10 +42,10 @@ export default function Favorite() {
         return (
             <>
                 <NavBar />
-                
+
                 <TitlePages title='Favoritos' numberProducts={dataProductsAPI.length} />
 
-                <View className={'animate-pulse'}>
+                <View className='animate-pulse pt-5'>
 
                     <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
 

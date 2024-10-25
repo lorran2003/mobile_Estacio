@@ -2,7 +2,7 @@ import { View, Text, Modal, Image, Pressable } from 'react-native'
 import { PropsAPI } from '../type/typeAPI';
 import { TitlePages } from './TitlePages';
 import { AntDesign } from '@expo/vector-icons';
-import { addCart } from '../API/cart/addCart';
+import { addCart } from '../API/cart/addFromCart';
 
 interface PropsModalBuy {
   product: PropsAPI;

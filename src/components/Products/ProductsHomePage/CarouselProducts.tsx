@@ -9,7 +9,7 @@ let currentIndex: number = 0;
 
 export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] }) {
 
-  const [cards, setCards] = useState<PropsAPI[]>(dataProducts.filter((_, index) => index < 4));
+  const [cards, setCards] = useState<PropsAPI[]>([]);
 
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -17,7 +17,14 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
   useEffect(() => {
 
+    if(dataProducts.length === 0){
+      return ;
+    }
+
+    setCards(dataProducts.filter((_, index) => index < 4));
+
     const interval = setInterval(() => {
+
 
       if (!visible) {
 
@@ -63,7 +70,7 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
     setVisible(false);
   }
 
-  if (cards.length > 0) {
+  if (dataProducts.length > 0) {
 
     return (
 
@@ -77,7 +84,6 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
           }
         </View>
       </View>
-
     )
   }
   return <NotfoundProducts />;

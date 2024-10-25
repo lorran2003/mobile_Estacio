@@ -8,24 +8,31 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { PropsAPI } from "../type/typeAPI";
 import { getProducts } from "../API/getProducts";
+import { Loading } from "../components/Loading/Loading";
+import { LoadingCarousel } from "../components/Carousel/LoadingCarousel";
+import { View } from "react-native";
 
 export default function Index() {
 
+  const [loading, setLoading] = useState(true);
   const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
 
   useEffect(() => {
 
     setStatusBarBackgroundColor('rgb(63 63 70)', true);
 
-    const fetchProducts = async () => {
+    async () => {
 
       const data = await getProducts();
-      
-      data ? setDataProductsAPI(data) : null;
+
+      setLoading(false);
+
+      if (data) {
+        setDataProductsAPI(data);
+        return;
+      }
 
     }
-
-    fetchProducts();
 
   }, [])
 
@@ -33,8 +40,17 @@ export default function Index() {
     <>
       <NavBar />
       <Banner image={require('../assets/images/banner.png')} />
-      <Carousel dataProducts={dataProductsAPI} />
-      <ProductsHome dataProducts={dataProductsAPI} />
+      {
+        loading ?
+          <View className={'animate-pulse'}>
+            <LoadingCarousel />
+            <Loading />
+          </View> :
+          <>
+            <Carousel dataProducts={dataProductsAPI} />
+            <ProductsHome dataProducts={dataProductsAPI} />
+          </>
+      }
       <Banner image={require('../assets/images/bannerOferta.png')} />
       <Footer />
     </>

@@ -1,7 +1,6 @@
-import { PropsAPI } from '@/src/type/typeAPI'
 import { View, Image } from 'react-native'
 
-export function CarouselCards({ image }: { image: string }) {
+export function ConatinerCarousel({ image }: { image: string }) {
     return (
         <View className='w-32 h-40 justify-center items-centerl rounded-md'>
             <Image

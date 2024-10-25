@@ -9,12 +9,16 @@ export const getProducts = async () => {
       method: "GET",
       headers: { "Content-type": "application/json" },
     });
-    const data: PropsAPI[] | undefined = await response.json();
+
+    const data: PropsAPI[] = await response.json();
 
     return data;
 
   } catch (error) {
+
     console.error('error :' , error);
+    return false ;
+  
   }
 
 }

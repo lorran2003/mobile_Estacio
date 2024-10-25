@@ -1,4 +1,4 @@
-import { CarouselCards } from './CarouselCards'
+import { ConatinerCarousel } from './ContainerCarousel'
 import { FlatList, View } from 'react-native';
 import { useEffect, useRef } from 'react';
 import { PropsAPI } from '@/src/type/typeAPI';
@@ -59,11 +59,11 @@ export function Carousel({ dataProducts }: { dataProducts: PropsAPI[] }) {
   return (
     <View className='py-5'>
       {
-        dataProducts.length > 1 ?
+        dataProducts.length > 0 ?
         <FlatList
         ref={flatListRef}
         data={products}
-        renderItem={({ item }) => <CarouselCards key={item.id} image={item.image} />}
+        renderItem={({ item }) => <ConatinerCarousel key={item.id} image={item.image} />}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         decelerationRate={'fast'}

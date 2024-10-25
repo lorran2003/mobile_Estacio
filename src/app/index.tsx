@@ -21,7 +21,7 @@ export default function Index() {
 
     setStatusBarBackgroundColor('rgb(63 63 70)', true);
 
-    async () => {
+    const fetchProducts = async () => {
 
       const data = await getProducts();
 
@@ -33,6 +33,8 @@ export default function Index() {
       }
 
     }
+
+    fetchProducts();
 
   }, [])
 

@@ -2,7 +2,7 @@ import { PropsAPI } from "@/src/type/typeAPI";
 import { arrayCart } from "./addFromCart";
 
 
-export const getFavoriteProducts = async () => {
+export const getProductsFromCart = async () => {
 
   try {
     const url: URL = new URL('http://192.168.1.245:3000/products');

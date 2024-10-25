@@ -9,7 +9,7 @@ let currentIndex: number = 0;
 
 export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] }) {
 
-  const [cards, setCards] = useState<PropsAPI[]>([]);
+  const [cards, setCards] = useState<PropsAPI[]>(dataProducts.filter((_, index) => index < 4));
 
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -17,14 +17,7 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
   useEffect(() => {
 
-    if(dataProducts.length === 0){
-      return ;
-    }
-
-    setCards(dataProducts.filter((_, index) => index < 4));
-
     const interval = setInterval(() => {
-
 
       if (!visible) {
 
@@ -59,7 +52,6 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
     }, 5000);
 
     return () => clearInterval(interval);
-
   });
 
   const openModal = (index: number) => {
@@ -70,21 +62,17 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
     setVisible(false);
   }
 
-  if (dataProducts.length > 0) {
+  return (
 
-    return (
+    <View className={'w-full ' + (visible ? ' blur-sm ' : null)}>
 
-      <View className={'w-full ' + (visible ? ' blur-sm ' : null)}>
+      <ModalBuy product={cards[index]} visible={visible} closeModal={closeModal} />
 
-        <ModalBuy product={cards[index]} visible={visible} closeModal={closeModal} />
-
-        <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
-          {
-            cards.map((item, index) => <CardsProducts key={item.id} product={item} openModal={openModal} index={index} />)
-          }
-        </View>
+      <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
+        {
+          cards.map((item, index) => <CardsProducts key={item.id} product={item} openModal={openModal} index={index} />)
+        }
       </View>
-    )
-  }
-  return <NotfoundProducts />;
+    </View>
+  )
 }

@@ -3,6 +3,7 @@ import { Link } from 'expo-router'
 import { View, Text } from 'react-native'
 import { CarouselProducts } from './CarouselProducts'
 import { PropsAPI } from '@/src/type/typeAPI'
+import NotfoundProducts from '../NotFound/NotfoundProducts'
 
 export function ProductsHome({ dataProducts }: { dataProducts: PropsAPI[] }) {
     return (
@@ -19,7 +20,11 @@ export function ProductsHome({ dataProducts }: { dataProducts: PropsAPI[] }) {
                 </View>
             </Link>
 
-            <CarouselProducts dataProducts={dataProducts} />
+            {
+                dataProducts.length > 0 ?
+                    <CarouselProducts dataProducts={dataProducts} /> :
+                    <NotfoundProducts />
+            }
 
         </View>
     )

@@ -7,7 +7,7 @@ import { TitlePages } from "../components/TitlePages";
 import NotfoundProducts from "../components/Products/NotFound/NotfoundProducts";
 import { View } from "react-native";
 import { CardsLoad } from "../components/Loading/CardsLoad";
-import { getFavoriteProducts } from "../API/favoriteProducts/getFavoriteProducts";
+import { getProductsFromCart } from "../API/cart/getProductFromCart";
 
 export default function Cart() {
 
@@ -19,7 +19,7 @@ export default function Cart() {
 
     const fetchProducts = async () => {
 
-      const data = await getFavoriteProducts();
+      const data = await getProductsFromCart();
 
       if (data) {
         setDataProductsAPI(data);

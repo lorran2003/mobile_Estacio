@@ -25,7 +25,7 @@ export function AllProducts({ products }: { products: PropsAPI[] }) {
   if (products.length > 0) {
 
     return (
-      <View className='gap-5'>
+      <View className='gap-5 pt-5'>
 
         <ModalBuy product={products[index]} visible={visible} closeModal={closeModal} />
 

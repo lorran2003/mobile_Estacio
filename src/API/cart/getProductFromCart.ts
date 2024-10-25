@@ -1,5 +1,5 @@
 import { PropsAPI } from "@/src/type/typeAPI";
-import { arrayCart } from "./addFromCart";
+import { arrayCart } from "./addToCart";
 
 
 export const getProductsFromCart = async () => {

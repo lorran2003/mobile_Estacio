@@ -1,12 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { View, Text, Pressable } from 'react-native'
-import { cardsDetails, CardsType } from '../Carousel/Carousel';
-import { TitlePages } from '../TitlePages';
 import { PageNavigation } from '../Products/Navigation/PageNavigation';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
-import { getProducts } from '@/src/API/getProducts';
-import { arrayCart } from '@/src/API/cart/addFromCart';
 import { ModalBuy } from '../ModalBuy';
 
 export function Index({ products }: { products: PropsAPI[] }) {
@@ -25,7 +21,7 @@ export function Index({ products }: { products: PropsAPI[] }) {
 
     if (products.length > 0) {
         return (
-            <View className='gap-5'>
+            <View className='gap-5 pt-5'>
 
                 <ModalBuy visible={visible} closeModal={closeModal} product={products[index]} />
 
@@ -53,7 +49,7 @@ export function Index({ products }: { products: PropsAPI[] }) {
     }
 
     return (
-        <View className='h-screen w-full justify-center items-center'>
+        <View className='w-full justify-center items-center py-5'>
             <Text>Carrinho vaio</Text>
         </View>
     )

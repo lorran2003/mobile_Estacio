@@ -2,7 +2,7 @@ import { View, Text, Modal, Image, Pressable } from 'react-native'
 import { PropsAPI } from '../type/typeAPI';
 import { TitlePages } from './TitlePages';
 import { AntDesign } from '@expo/vector-icons';
-import { addCart } from '../API/cart/addFromCart';
+import { addToCart } from '../API/cart/addToCart';
 
 interface PropsModalBuy {
   product: PropsAPI;
@@ -15,7 +15,7 @@ export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
   const addProductToCart = async ({ product }: { product: PropsAPI }) => {
     try {
 
-      await addCart({ product });
+      await addToCart({ product });
       closeModal();
     
     } catch (error) {

@@ -9,14 +9,14 @@ export function ProductsHome({ dataProducts }: { dataProducts: PropsAPI[] }) {
     return (
         <View className='justify-center items-center gap-3 pb-5 w-full'>
 
-            <Text className='text-[##CA9D37] text-4xl font-bold'>Nossos produtos</Text>
+            <Text className='text-[#CA9D37] text-4xl font-bold'>Nossos produtos</Text>
 
             <Link href={'/products'}>
-                <View className='flex-row justify-center items-center gap-1'>
-                    <Text className='underline'>
+                <View className='flex-row justify-center items-center gap-1 opacity-70'>
+                    <Text className='underline text-lg'>
                         Ver todos os produtos
                     </Text>
-                    <AntDesign name="arrowright" size={20} color="black" />
+                    <AntDesign name="arrowright" size={24} color="black" />
                 </View>
             </Link>
 

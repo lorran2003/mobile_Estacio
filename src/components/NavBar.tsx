@@ -1,17 +1,13 @@
 import { View, Pressable, Image } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
+import { Logo } from './Logo';
 
 export function NavBar() {
     return (
         <View className='flex-row justify-between items-center w-full p-5'>
             <Link href={'/'}>
-                <View className='items-center justify-center shadow shadow-zinc-800 rounded-full border-solid border-[#CA9D37] border'>
-                    <Image
-                        source={require('../assets/images/logo.jpg')}
-                        className='w-full rounded-full'
-                    />
-                </View>
+                <Logo/>
             </Link>
 
             <View className='flex-row gap-2'>

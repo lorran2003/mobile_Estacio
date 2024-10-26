@@ -4,7 +4,7 @@ export function TitlePages({ title, numberProducts, textElement }: { title: stri
     return (
         <View className='bg-zinc-50 w-full p-6 '>
 
-            <Text className='text-[##CA9D37] text-4xl font-bold'>
+            <Text className='text-[#CA9D37] text-4xl font-bold'>
                 {title}
             </Text>
             {

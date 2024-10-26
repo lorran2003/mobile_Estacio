@@ -1,6 +1,6 @@
-import { View, Pressable, Image } from 'react-native'
-import { AntDesign, Ionicons } from '@expo/vector-icons'
-import { Link } from 'expo-router'
+import { View, Pressable, Image } from 'react-native';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 
 export function NavBar() {
     return (
@@ -9,7 +9,7 @@ export function NavBar() {
                 <View className='items-center justify-center shadow shadow-zinc-800 rounded-full border-solid border-[#CA9D37] border'>
                     <Image
                         source={require('../assets/images/logo.jpg')}
-                        className='size-20 rounded-full'
+                        className='w-full rounded-full'
                     />
                 </View>
             </Link>
@@ -18,20 +18,21 @@ export function NavBar() {
 
                 <Link href={'/(user)/login'}>
                     <View className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>
-                        <AntDesign name="user" size={24} color="black" />
+                        <AntDesign name="user" size={28} color="black" />
                     </View>
                 </Link>
 
                 <Link href={'/cart'}>
                     <View className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>
-                        <AntDesign name="shoppingcart" size={24} color="black" />
+                        <AntDesign name="shoppingcart" size={28} color="black" />
                     </View>
                 </Link>
 
                 <Pressable className='border-solid border-[#CA9D37] border bg-zinc-50 shadow shadow-zinc-800 p-2 rounded-full'>
-                    <Ionicons name="menu-outline" size={24} color="black" />
+                    <Ionicons name="menu-outline" size={28} color="black" />
                 </Pressable>
             </View>
         </View>
     )
 }
+

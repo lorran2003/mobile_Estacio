@@ -1,44 +1,7 @@
 import { ConatinerCarousel } from './ContainerCarousel'
-import { FlatList, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { useEffect, useRef } from 'react';
 import { PropsAPI } from '@/src/type/typeAPI';
-import { StyleSheet } from 'nativewind';
-
-export interface CardsType {
-  id: number;
-  img: any;
-}
-
-export const cardsDetails: CardsType[] = [
-  {
-    id: 1,
-    img: require('../../assets/images/imgCarousel.png')
-  },
-  {
-    id: 2,
-    img: require('../../assets/images/imgCarousel.png')
-  },
-  {
-    id: 3,
-    img: require('../../assets/images/imgCarousel.png')
-  },
-  {
-    id: 4,
-    img: require('../../assets/images/imgCarousel.png')
-  },
-  {
-    id: 5,
-    img: require('../../assets/images/imgCarousel.png')
-  },
-  {
-    id: 6,
-    img: require('../../assets/images/imgCarousel.png')
-  },
-  {
-    id: 7,
-    img: require('../../assets/images/imgCarousel.png')
-  },
-]
 
 export function Carousel({ dataProducts }: { dataProducts: PropsAPI[] }) {
   

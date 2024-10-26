@@ -1,11 +1,16 @@
-import { View, Text, Image, Pressable } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import { TitlePages } from '../TitlePages'
 import { Input } from '../Input'
 import { Logo } from '../Logo'
-import { Link } from 'expo-router'
-import { UserSubmit } from './UserSubmit'
+import { Link, useRouter } from 'expo-router'
 
 export function Login() {
+
+    const router =  useRouter();
+
+    const login = () => {
+        router.replace("/(user)/profile")
+    }
     return (
 
         <View className='w-full items-center gap-10'>
@@ -27,12 +32,18 @@ export function Login() {
 
                 </View>
 
-                <UserSubmit
-                    title='Login'
-                    text='Se não? Registre aqui'
-                    router={'/(user)/register'}
-                />
+                <Pressable
+                    className='bg-[#CA9D37] rounded-md py-2 px-8'
+                    onPress={() => login()}
+                >
+                    <Text className='text-zinc-50 font-semibold text-xl'>Login</Text>
+                </Pressable>
 
+                <Link href={'/(user)/register'}>
+                    <Text className='text-zinc-800/60 underline'>
+                        Se não? Registre aqui
+                    </Text>
+                </Link>
             </View>
         </View>
 

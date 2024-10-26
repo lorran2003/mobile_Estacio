@@ -16,7 +16,6 @@ export const addProductsFavoriteList = async ({ product }: { product: PropsAPI }
         // return data;
 
         arrayFav.push(product);
-        console.log(arrayFav);
         return;
     }
     catch {

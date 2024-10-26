@@ -17,7 +17,6 @@ export const addToCart = async ({ product }: { product: PropsAPI }) => {
         // return data;
 
         arrayCart.push(product);
-        console.log(arrayCart);
         return ;
     }
     catch {

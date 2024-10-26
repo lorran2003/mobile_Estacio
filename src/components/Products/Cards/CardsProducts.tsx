@@ -73,7 +73,7 @@ export function CardsProducts({ product, openModal, index }: PropsCardsProducts)
                 </Pressable>
 
                 <Pressable
-                    className='bg-[##CA9D37] rounded-full p-2'
+                    className='bg-[#CA9D37] rounded-full p-2'
                     onPress={() => openModal(index)}
                 >
 

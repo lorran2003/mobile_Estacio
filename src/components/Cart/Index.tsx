@@ -34,11 +34,11 @@ export function Index({ products }: { products: PropsAPI[] }) {
                 <View className='flex-row gap-5 justify-center items-center'>
 
                     <Pressable className='bg-[#CA9D37] rounded-lg p-2 w-40 h-14 justify-center items-center '>
-                        <Text className='text-zinc-50 text-center'>Adicionar ao carrinho</Text>
+                        <Text className='text-zinc-50 text-center'>Checkout</Text>
                     </Pressable>
 
                     <Pressable className='bg-zinc-50 rounded-lg p-2 w-40 h-14 justify-center items-center '>
-                        <Text className='text-zinc-800 text-center'>Apagar favoritos</Text>
+                        <Text className='text-zinc-800 text-center'>Apagar carinho</Text>
                     </Pressable>
 
                 </View>

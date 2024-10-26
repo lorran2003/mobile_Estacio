@@ -17,7 +17,6 @@ export const removeToProduct = async ({ product }: { product: PropsAPI }) => {
         arrayCart.forEach((item, index) => {
             item.id === product.id ? arrayCart.splice(index) : null ; 
         });
-        console.log(arrayCart);
         return;
     }
     catch {

@@ -12,7 +12,7 @@ export function Footer() {
                     href={'/favorite'}
                     className='text-zinc-800/70'
                 >
-                    favoritos
+                    Favoritos
                 </Link>
                
                 <Link
@@ -22,16 +22,16 @@ export function Footer() {
                     Carrinho
                 </Link>
 
-                <Text className='text-zinc-800/70'>promos</Text>
+                <Text className='text-zinc-800/70'>Promos</Text>
 
                 <Link
                     href={'/(user)/profile'}
                     className='text-zinc-800/70'
                 >
-                    minha conta
+                    Minha conta
                 </Link>
                 
-                <Text className='text-zinc-800/70'>ajuda</Text>
+                <Text className='text-zinc-800/70'>Ajuda</Text>
 
             </View>
 

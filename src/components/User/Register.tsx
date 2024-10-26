@@ -1,8 +1,8 @@
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import { TitlePages } from '../TitlePages'
 import { Logo } from '../Logo'
 import { Input } from '../Input'
-import { UserSubmit } from './UserSubmit'
+import { Link } from 'expo-router'
 
 export function RegisterUser() {
   return (
@@ -37,10 +37,17 @@ export function RegisterUser() {
 
         </View>
 
-        <UserSubmit title='Registrar' text='Já possui conta? Logue aqui' router={'/(user)/login'} />
+        <Pressable className='bg-[#CA9D37] rounded-md py-2 px-8'>
+          <Text className='text-zinc-50 font-semibold text-xl'>Registrar</Text>
+        </Pressable>
+
+        <Link href={'/(user)/login'}>
+          <Text className='text-zinc-800/60 underline'>
+          Já possui conta? Logue aqui
+          </Text>
+        </Link>
 
       </View>
-
 
     </View>
   )

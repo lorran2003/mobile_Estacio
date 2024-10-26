@@ -17,7 +17,6 @@ export const removeProductsFavoriteList = async ({ product }: { product: PropsAP
         arrayFav.forEach((item, index) => {
             item.id === product.id ? arrayFav.splice(index) : null ; 
         });
-        console.log(arrayFav);
         return;
     }
     catch {

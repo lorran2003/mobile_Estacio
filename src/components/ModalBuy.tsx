@@ -3,12 +3,22 @@ import { PropsAPI } from '../type/typeAPI';
 import { TitlePages } from './TitlePages';
 import { AntDesign } from '@expo/vector-icons';
 import { addToCart } from '../API/cart/addToCart';
+import * as Notification from "expo-notifications"
 
 interface PropsModalBuy {
   product: PropsAPI;
   visible: boolean;
   closeModal: () => void;
 }
+
+Notification.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false
+  })
+})
+
 
 export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
 
@@ -98,7 +108,13 @@ export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
                     <AntDesign name="shoppingcart" size={24} color="white" />
                   </Pressable>
 
-                  <Pressable className='bg-[#CA9D37] rounded-md p-3 justify-center items-center'>
+                  <Pressable
+                    className='bg-[#CA9D37] rounded-md p-3 justify-center items-center'
+                    onPress={async () =>{
+                      await pushNotification();
+                      closeModal();
+                    }}
+                  >
                     <Text className='text-zinc-50'>Comprar</Text>
                   </Pressable>
 
@@ -111,3 +127,13 @@ export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
     </Modal>
   )
 }
+
+const pushNotification = async () => {
+  await Notification.scheduleNotificationAsync({
+    content:{
+      title: 'ola mundo',
+      body: "Notificado com sucesso",
+    },
+     trigger: null
+  });
+};

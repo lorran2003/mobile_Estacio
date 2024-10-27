@@ -1,8 +1,8 @@
-import { View, Text, Pressable } from 'react-native'
-import { TitlePages } from '../TitlePages'
-import { Logo } from '../Logo'
-import { Input } from '../Input'
-import { Link } from 'expo-router'
+import { View, Text, Pressable } from 'react-native';
+import { TitlePages } from '../TitlePages';
+import { Logo } from '../Logo';
+import { Input } from '../Input';
+import { Link } from 'expo-router';
 
 export function RegisterUser() {
   return (

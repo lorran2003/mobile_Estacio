@@ -4,7 +4,7 @@ import { Entypo } from '@expo/vector-icons';
 
 export function ProfileUser() {
 
-    const imageDefault = require('../../assets/images/imageDefaultUser.jpg');
+    const imageDefault = require('@/src/assets/images/imageDefaultUser.jpg');
 
     const editPhoto = () => {
         

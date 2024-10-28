@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { Text, View } from 'react-native'
-import { cardsDetails, CardsType } from '../../Carousel/Carousel'
 import { CardsProducts } from '../Cards/CardsProducts'
 import { PageNavigation } from '../Navigation/PageNavigation';
-import { TitlePages } from '../../TitlePages';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { getProducts } from '@/src/API/getProducts';
-import { ModalBuy } from '../../ModalBuy';
+import { ModalBuy } from '../../Modal/ModalBuy';
 
 export function AllProducts({ products }: { products: PropsAPI[] }) {
 

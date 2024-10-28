@@ -2,7 +2,7 @@ import { View, Image, StyleSheet } from 'react-native'
 
 export function Logo() {
     return (
-        <View className='size-24 items-center justify-center shadow shadow-neutral-800 rounded-full border-solid border-[#CA9D37] border'>
+        <View className='size-24 items-center justify-center rounded-full border-solid border-[#CA9D37] border'>
             <Image
                 source={require('../assets/images/logo.jpg')}
                 style={style.container}

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { Banner } from "@/src/components/Banner";
 import { NavBar } from "@/src/components/NavBar";
-import { LoadingCarousel } from "@/src/components/Carousel/LoadingCarousel";
+import { LoadingCarousel } from "@/src/components/Loading/LoadingCarousel";
 import { Loading } from "@/src/components/Loading/Loading";
 import { Carousel } from "@/src/components/Carousel/Carousel";
 import { ProductsHome } from "@/src/components/Products/ProductsHomePage/ProductsHome";
@@ -18,7 +18,7 @@ export default function Index() {
 
   useEffect(() => {
 
-    setStatusBarBackgroundColor('#fff', true);
+    setStatusBarBackgroundColor('#18181b', true);
 
     const fetchProducts = async () => {
 

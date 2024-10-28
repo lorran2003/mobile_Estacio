@@ -1,9 +1,9 @@
 import { View, Text, Modal, Image, Pressable, StyleSheet, ScrollView, Alert } from 'react-native'
-import { PropsAPI } from '../type/typeAPI';
-import { TitlePages } from './TitlePages';
 import { AntDesign } from '@expo/vector-icons';
-import { addToCart } from '../API/cart/addToCart';
 import * as Notification from "expo-notifications"
+import { PropsAPI } from '@/src/type/typeAPI';
+import { TitlePages } from '../TitlePages';
+import { addToCart } from '@/src/API/cart/addToCart';
 
 interface PropsModalBuy {
   product: PropsAPI;

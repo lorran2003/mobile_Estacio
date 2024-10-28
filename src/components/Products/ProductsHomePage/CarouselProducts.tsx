@@ -2,8 +2,7 @@ import { View } from 'react-native';
 import { CardsProducts } from '../Cards/CardsProducts';
 import { useEffect, useState } from 'react';
 import { PropsAPI } from '@/src/type/typeAPI';
-import NotfoundProducts from '../NotFound/NotfoundProducts';
-import { ModalBuy } from '../../ModalBuy';
+import { ModalBuy } from '../../Modal/ModalBuy';
 
 let currentIndex: number = 0;
 

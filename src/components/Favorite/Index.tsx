@@ -4,7 +4,7 @@ import { TitlePages } from '../TitlePages';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PageNavigation } from '../Products/Navigation/PageNavigation';
 import { PropsAPI } from '@/src/type/typeAPI';
-import { ModalBuy } from '../ModalBuy';
+import { ModalBuy } from '../Modal/ModalBuy';
 
 export function Index({ products }: { products: PropsAPI[] }) {
 

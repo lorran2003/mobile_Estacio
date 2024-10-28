@@ -3,7 +3,7 @@ import { View, Text, Pressable } from 'react-native'
 import { PageNavigation } from '../Products/Navigation/PageNavigation';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
-import { ModalBuy } from '../ModalBuy';
+import { ModalBuy } from '../Modal/ModalBuy';
 
 export function Index({ products }: { products: PropsAPI[] }) {
 

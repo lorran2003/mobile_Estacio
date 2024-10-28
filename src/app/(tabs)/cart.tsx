@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Index } from "../components/Cart/Index";
-import { Footer } from "../components/Footer";
-import { NavBar } from "../components/NavBar";
-import { PropsAPI } from "../type/typeAPI";
-import { TitlePages } from "../components/TitlePages";
-import NotfoundProducts from "../components/Products/NotFound/NotfoundProducts";
-import { View } from "react-native";
-import { CardsLoad } from "../components/Loading/CardsLoad";
-import { getProductsFromCart } from "../API/cart/getProductFromCart";
+import { getProductsFromCart } from "@/src/API/cart/getProductFromCart";
+import { Index } from "@/src/components/Cart/Index";
+import { Footer } from "@/src/components/Footer";
+import { CardsLoad } from "@/src/components/Loading/CardsLoad";
+import { NavBar } from "@/src/components/NavBar";
+import NotfoundProducts from "@/src/components/Products/NotFound/NotfoundProducts";
+import { TitlePages } from "@/src/components/TitlePages";
+import { PropsAPI } from "@/src/type/typeAPI";
+import { useEffect, useState } from "react";
+import { ScrollView, View } from "react-native";
 
 export default function Cart() {
 
@@ -40,7 +40,11 @@ export default function Cart() {
   if (loading) {
 
     return (
-      <>
+      <ScrollView
+        className="bg-neutral-200 flex-1"
+        showsVerticalScrollIndicator={false}
+      >
+
         <NavBar />
 
         <TitlePages title='Carrinho' numberProducts={dataProductsAPI.length} />
@@ -62,23 +66,30 @@ export default function Cart() {
         </View>
 
         <Footer />
-      </>
+      </ScrollView>
     )
   }
 
   return (
     request ?
-      <>
+      <ScrollView
+        className="bg-neutral-200 flex-1"
+        showsVerticalScrollIndicator={false}
+      >
         <NavBar />
         <TitlePages title='Carrinho' numberProducts={dataProductsAPI.length} />
         <Index products={dataProductsAPI} />
         <Footer />
-      </> :
-      <>
+      </ScrollView> :
+
+      <ScrollView
+        className="bg-neutral-200 flex-1"
+        showsVerticalScrollIndicator={false}
+      >
         <NavBar />
         <TitlePages title='Carrinho' numberProducts={dataProductsAPI.length} />
         <NotfoundProducts />
         <Footer />
-      </>
+      </ScrollView>
   )
 }

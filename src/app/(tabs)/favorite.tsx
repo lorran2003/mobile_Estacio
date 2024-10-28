@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Index } from "../components/Favorite/Index";
-import { Footer } from "../components/Footer";
-import { NavBar } from "../components/NavBar";
-import { getFavoriteProducts } from "../API/favoriteProducts/getFavoriteProducts";
-import { PropsAPI } from "../type/typeAPI";
-import { View } from "react-native";
-import { CardsLoad } from "../components/Loading/CardsLoad";
-import NotfoundProducts from "../components/Products/NotFound/NotfoundProducts";
-import { TitlePages } from "../components/TitlePages";
+import { getFavoriteProducts } from "@/src/API/favoriteProducts/getFavoriteProducts";
+import { Index } from "@/src/components/Favorite/Index";
+import { Footer } from "@/src/components/Footer";
+import { CardsLoad } from "@/src/components/Loading/CardsLoad";
+import { NavBar } from "@/src/components/NavBar";
+import NotfoundProducts from "@/src/components/Products/NotFound/NotfoundProducts";
+import { TitlePages } from "@/src/components/TitlePages";
+import { PropsAPI } from "@/src/type/typeAPI";
+import { useEffect, useState } from "react";
+import { ScrollView, View } from "react-native";
+
 
 export default function Favorite() {
 
@@ -40,7 +41,10 @@ export default function Favorite() {
     if (loading) {
 
         return (
-            <>
+            <ScrollView
+                className="bg-neutral-200 flex-1"
+                showsVerticalScrollIndicator={false}
+            >
                 <NavBar />
 
                 <TitlePages title='Favoritos' numberProducts={dataProductsAPI.length} />
@@ -62,23 +66,30 @@ export default function Favorite() {
                 </View>
 
                 <Footer />
-            </>
+            </ScrollView>
         )
     }
 
     return (
         request ?
-            <>
+            <ScrollView
+                className="bg-neutral-200 flex-1"
+                showsVerticalScrollIndicator={false}
+            >
                 <NavBar />
                 <TitlePages title='Favoritos' numberProducts={dataProductsAPI.length} />
                 <Index products={dataProductsAPI} />
                 <Footer />
-            </> :
-            <>
+            </ScrollView> :
+            
+            <ScrollView
+                className="bg-neutral-200 flex-1"
+                showsVerticalScrollIndicator={false}
+            >
                 <NavBar />
                 <TitlePages title='Favoritos' numberProducts={dataProductsAPI.length} />
                 <NotfoundProducts />
                 <Footer />
-            </>
+            </ScrollView>
     )
 }

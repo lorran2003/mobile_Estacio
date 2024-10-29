@@ -4,7 +4,10 @@ import { ScrollView } from "react-native";
 
 export default function UserLayout() {
     return (
-        <ScrollView>
+        <ScrollView
+            className="bg-neutral-200 flex-1"
+            showsVerticalScrollIndicator={false}
+        >
             <Slot />
         </ScrollView>
     )

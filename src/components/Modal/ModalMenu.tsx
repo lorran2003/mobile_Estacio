@@ -1,5 +1,6 @@
-import { Animated, Dimensions, Image, Modal, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Dimensions, Image, Modal, Pressable, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 const imageDefault = require('@/src/assets/images/imageDefaultUser.jpg');
 
@@ -11,6 +12,35 @@ interface PropsModalMenu {
 }
 
 export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
+
+    const pressButton = (props: string) => {
+        switch (props) {
+
+            case "home":
+                router.replace("/");
+                closeModal();
+                break;
+
+            case "profile":
+                router.replace("/(tabs)/(user)/login");
+                closeModal();
+                break;
+
+            case "cart":
+                router.replace("/(tabs)/cart");
+                closeModal();
+                break;
+
+            case "favorite":
+                router.replace("/(tabs)/favorite");
+                closeModal();
+                break;
+
+            default:
+                alert("Ops... algo deu errado");
+                break;
+        }
+    }
 
     return (
         <Modal
@@ -34,7 +64,7 @@ export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
 
                         <ScrollView
                             showsVerticalScrollIndicator={false}
-                            contentContainerStyle={{gap: 40}}
+                            contentContainerStyle={{ gap: 40 }}
                         >
 
                             <View className='w-full justify-center items-center gap-5'>
@@ -49,36 +79,48 @@ export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
                                 <Text className='font-semibold text-xl text-zinc-800'>Name</Text>
                             </View>
 
-                            <View className='justify-center items-start pb-10 border-b-2 border-solid border-neutral-400 w-full gap-5' >
+                            <View className='justify-center items-start pb-10 border-b-2 border-solid border-[#CA9D37] w-full gap-5' >
 
 
-                                <View className='flex-row gap-4 items-center'>
+                                <Pressable
+                                    className='flex-row gap-4 items-center'
+                                    onPress={() => pressButton("home")}
+                                >
                                     <Ionicons name="home-outline" size={28} color="grey" />
                                     <Text className='text-neutral-500 font-medium text-xl'>
                                         Home
                                     </Text>
-                                </View>
+                                </Pressable>
 
-                                <View className='flex-row gap-4 items-center'>
+                                <Pressable
+                                    className='flex-row gap-4 items-center'
+                                    onPress={() => pressButton("profile")}
+                                >
                                     <AntDesign name="user" size={28} color="grey" />
                                     <Text className='text-neutral-500 font-medium text-xl'>
                                         Perfil
                                     </Text>
-                                </View>
+                                </Pressable>
 
-                                <View className='flex-row gap-4 items-center'>
+                                <Pressable
+                                    className='flex-row gap-4 items-center'
+                                    onPress={() => pressButton("cart")}
+                                >
                                     <AntDesign name="shoppingcart" size={28} color="grey" />
                                     <Text className='text-neutral-500 font-medium text-xl'>
                                         Carrinho
                                     </Text>
-                                </View>
+                                </Pressable>
 
-                                <View className='flex-row gap-4 items-center'>
+                                <Pressable
+                                    className='flex-row gap-4 items-center'
+                                    onPress={() => pressButton("favorite")}
+                                >
                                     <AntDesign name="hearto" size={28} color="grey" />
                                     <Text className='text-neutral-500 font-medium text-xl'>
                                         Favoritos
                                     </Text>
-                                </View>
+                                </Pressable>
 
                             </View>
 

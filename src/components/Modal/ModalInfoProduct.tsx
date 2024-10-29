@@ -1,4 +1,4 @@
-import { View, Text, Modal, Image, Pressable, StyleSheet, ScrollView, Alert } from 'react-native'
+import { View, Text, Modal, Image, Pressable, StyleSheet, ScrollView, Alert, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import * as Notification from "expo-notifications"
 import { PropsAPI } from '@/src/type/typeAPI';
@@ -20,7 +20,7 @@ Notification.setNotificationHandler({
 })
 
 
-export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
+export function ModalInfoProduct({ product, visible, closeModal }: PropsModalBuy) {
 
   const addProductToCart = async ({ product }: { product: PropsAPI }) => {
     try {
@@ -59,12 +59,14 @@ export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
 
           </View>
 
-          <View className='w-11/12 bg-zinc-50 rounded-md gap-5 p-3'>
+          <View className='w-11/12 bg-zinc-50 rounded-md gap-5 p-3 sm:h-screen'>
+
 
             <Image
               source={{ uri: product.image }}
-              className='w-full h-96 rounded-md'
+              className='h-[28rem] sm:h-3/4 rounded-md'
             />
+
 
             <View className='gap-3'>
 
@@ -100,27 +102,28 @@ export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
 
                 <View className='gap-2' >
 
-                  <Pressable
+                  <TouchableOpacity
                     className='bg-zinc-800 rounded-md p-3 flex-row gap-2 justify-center items-center'
                     onPress={() => addProductToCart({ product })}
                   >
                     <Text className='text-zinc-50'>Adicionar</Text>
                     <AntDesign name="shoppingcart" size={24} color="white" />
-                  </Pressable>
+                  </TouchableOpacity>
 
-                  <Pressable
+                  <TouchableOpacity
                     className='bg-[#CA9D37] rounded-md p-3 justify-center items-center'
-                    onPress={async () =>{
+                    onPress={async () => {
                       await pushNotification();
                       closeModal();
                     }}
                   >
                     <Text className='text-zinc-50'>Comprar</Text>
-                  </Pressable>
+                  </TouchableOpacity>
 
                 </View>
               </View>
             </View>
+
           </View>
         </View>
       </ScrollView>
@@ -130,10 +133,10 @@ export function ModalBuy({ product, visible, closeModal }: PropsModalBuy) {
 
 const pushNotification = async () => {
   await Notification.scheduleNotificationAsync({
-    content:{
+    content: {
       title: 'ola mundo',
       body: "Notificado com sucesso",
     },
-     trigger: null
+    trigger: null
   });
 };

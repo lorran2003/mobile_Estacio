@@ -4,7 +4,7 @@ import { CardsProducts } from '../Cards/CardsProducts'
 import { PageNavigation } from '../Navigation/PageNavigation';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { getProducts } from '@/src/API/getProducts';
-import { ModalBuy } from '../../Modal/ModalBuy';
+import { ModalInfoProduct } from '../../Modal/ModalInfoProduct';
 
 export function AllProducts({ products }: { products: PropsAPI[] }) {
 
@@ -25,7 +25,7 @@ export function AllProducts({ products }: { products: PropsAPI[] }) {
     return (
       <View className='gap-5 pt-5'>
 
-        <ModalBuy product={products[index]} visible={visible} closeModal={closeModal} />
+        <ModalInfoProduct product={products[index]} visible={visible} closeModal={closeModal} />
 
         <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
           {

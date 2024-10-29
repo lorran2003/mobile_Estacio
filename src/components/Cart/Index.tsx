@@ -3,7 +3,7 @@ import { View, Text, Pressable } from 'react-native'
 import { PageNavigation } from '../Products/Navigation/PageNavigation';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
-import { ModalBuy } from '../Modal/ModalBuy';
+import { ModalInfoProduct } from '../Modal/ModalInfoProduct';
 
 export function Index({ products }: { products: PropsAPI[] }) {
 
@@ -23,7 +23,7 @@ export function Index({ products }: { products: PropsAPI[] }) {
         return (
             <View className='gap-5 pt-5'>
 
-                <ModalBuy visible={visible} closeModal={closeModal} product={products[index]} />
+                <ModalInfoProduct visible={visible} closeModal={closeModal} product={products[index]} />
 
                 <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
                     {

@@ -12,5 +12,4 @@ export default function UserLayout() {
         </ScrollView>
     )
 
-
 }

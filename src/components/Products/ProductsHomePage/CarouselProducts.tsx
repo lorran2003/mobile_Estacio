@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { CardsProducts } from '../Cards/CardsProducts';
 import { useEffect, useState } from 'react';
 import { PropsAPI } from '@/src/type/typeAPI';
-import { ModalBuy } from '../../Modal/ModalBuy';
+import { ModalInfoProduct } from '../../Modal/ModalInfoProduct';
 
 let currentIndex: number = 0;
 
@@ -65,7 +65,7 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
     <View className={'w-full ' + (visible ? ' blur-sm ' : null)}>
 
-      <ModalBuy product={cards[index]} visible={visible} closeModal={closeModal} />
+      <ModalInfoProduct product={cards[index]} visible={visible} closeModal={closeModal} />
 
       <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
         {

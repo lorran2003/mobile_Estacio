@@ -25,7 +25,7 @@ export function Footer() {
                 <Text className='text-zinc-800/70'>Promos</Text>
 
                 <Link
-                    href={'/(user)/profile'}
+                    href={'/(user)/login'}
                     className='text-zinc-800/70'
                 >
                     Minha conta

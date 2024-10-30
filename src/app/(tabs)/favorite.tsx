@@ -6,7 +6,8 @@ import { NavBar } from "@/src/components/NavBar";
 import NotfoundProducts from "@/src/components/Products/NotFound/NotfoundProducts";
 import { TitlePages } from "@/src/components/TitlePages";
 import { PropsAPI } from "@/src/type/typeAPI";
-import { useEffect, useState } from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 
 
@@ -16,27 +17,32 @@ export default function Favorite() {
     const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
     const [request, setRequest] = useState<boolean>(false);
 
-    useEffect(() => {
+    useFocusEffect(
 
-        const fetchProducts = async () => {
+        useCallback(() => {
 
-            const data = await getFavoriteProducts();
+            const fetchProducts = async () => {
 
-            if (data) {
-                setDataProductsAPI(data);
-                setRequest(true);
+                const data = await getFavoriteProducts();
+
+                if (data) {
+                    setDataProductsAPI(data);
+                    setRequest(true);
+                }
+                else {
+                    setRequest(false);
+                }
+
+                setLoading(false);
+
             }
-            else {
-                setRequest(false);
-            }
 
-            setLoading(false);
+            fetchProducts();
 
-        }
-
-        fetchProducts();
-
-    }, [])
+            return () => setLoading(true);
+            
+        }, [])
+    )
 
     if (loading) {
 

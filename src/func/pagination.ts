@@ -18,13 +18,14 @@ export const nextPage = (quantityOfProductsRender: number, products: PropsAPI[])
 
     for (let index = quantityOfProductsRender; index < quantityOfProductsRender + 4; index++) {
 
-        if (index > products.length) {
+        if (index >= products.length) {
             break;
         };
 
         newProductsRender.push(products[index]);
 
     };
+
     return newProductsRender;
 };
 

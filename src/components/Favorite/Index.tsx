@@ -8,6 +8,8 @@ import { ModalInfoProduct } from '../Modal/ModalInfoProduct';
 
 export function Index({ products }: { products: PropsAPI[] }) {
 
+  const [renderProducts, setRenderProducts] = useState<PropsAPI[]>(products.filter((_, index) => index < 4));
+
   const [visible, setVisible] = useState<boolean>(false);
 
   const [index, setIndex] = useState<number>(0);
@@ -24,7 +26,7 @@ export function Index({ products }: { products: PropsAPI[] }) {
     return (
       <View className='gap-5'>
 
-        <ModalInfoProduct visible={visible} closeModal={closeModal} product={products[index]} />
+        <ModalInfoProduct visible={visible} closeModal={closeModal} product={renderProducts[index]} />
 
         <View className='w-full justify-center items-center gap-5 flex-row flex-wrap pt-5'>
           {
@@ -32,6 +34,9 @@ export function Index({ products }: { products: PropsAPI[] }) {
           }
         </View>
 
+
+        <PageNavigation products={products} setRenderProducts={setRenderProducts} />
+      
         <View className='flex-row gap-5 justify-center items-center'>
 
           <Pressable className='bg-[#CA9D37] rounded-lg p-2 w-40 h-14 justify-center items-center '>
@@ -43,8 +48,6 @@ export function Index({ products }: { products: PropsAPI[] }) {
           </Pressable>
 
         </View>
-
-        <PageNavigation />
       </View>
     )
   }

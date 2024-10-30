@@ -3,22 +3,17 @@ import { Text, View } from 'react-native'
 import { CardsProducts } from '../Cards/CardsProducts'
 import { PageNavigation } from '../Navigation/PageNavigation';
 import { PropsAPI } from '@/src/type/typeAPI';
-import { getProducts } from '@/src/API/getProducts';
 import { ModalInfoProduct } from '../../Modal/ModalInfoProduct';
-import { lastPage, nextPage, previousPage, startPage } from '@/src/func/pagination';
 
 export function AllProducts({ products }: { products: PropsAPI[] }) {
 
-  const firstCards : PropsAPI[] = products.filter((_, index) => index < 4);
-
-  const [renderProducts, setRenderProducts] = useState<PropsAPI[]>(firstCards);
+  const [renderProducts, setRenderProducts] = useState<PropsAPI[]>(products.filter((_, index) => index < 4));
 
   const [visible, setVisible] = useState<boolean>(false);
 
   const [index, setIndex] = useState<number>(0);
 
   const openModal = (index: number) => {
-    console.log(renderProducts)
     setIndex(index);
     setVisible(true);
   }

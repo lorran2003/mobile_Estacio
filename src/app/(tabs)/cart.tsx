@@ -6,36 +6,42 @@ import { NavBar } from "@/src/components/NavBar";
 import NotfoundProducts from "@/src/components/Products/NotFound/NotfoundProducts";
 import { TitlePages } from "@/src/components/TitlePages";
 import { PropsAPI } from "@/src/type/typeAPI";
-import { useEffect, useState } from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
 import { ScrollView, View } from "react-native";
 
 export default function Cart() {
 
   const [loading, setLoading] = useState(true);
-  const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
+  const [prodcuts, setProducts] = useState<PropsAPI[]>([]);
   const [request, setRequest] = useState<boolean>();
 
-  useEffect(() => {
+  useFocusEffect(
 
-    const fetchProducts = async () => {
+    useCallback(() => {
 
-      const data = await getProductsFromCart();
+      const fetchProducts = async () => {
 
-      if (data) {
-        setDataProductsAPI(data);
-        setRequest(true);
+        const data = await getProductsFromCart();
+
+        if (data) {
+          setProducts(data);
+          setRequest(true);
+        }
+        else {
+          setRequest(false);
+        }
+
+        setLoading(false);
       }
-      else {
-        setRequest(false);
-      }
 
-      setLoading(false);
+      fetchProducts();
 
-    }
+      return () =>  setLoading(true);
+      
+    }, [])
 
-    fetchProducts();
-
-  }, [])
+  );
 
   if (loading) {
 
@@ -47,7 +53,7 @@ export default function Cart() {
 
         <NavBar />
 
-        <TitlePages title='Carrinho' numberProducts={dataProductsAPI.length} />
+        <TitlePages title='Carrinho' numberProducts={prodcuts.length} />
 
         <View className='animate-pulse pt-5'>
 
@@ -77,8 +83,8 @@ export default function Cart() {
         showsVerticalScrollIndicator={false}
       >
         <NavBar />
-        <TitlePages title='Carrinho' numberProducts={dataProductsAPI.length} />
-        <Index products={dataProductsAPI} />
+        <TitlePages title='Carrinho' numberProducts={prodcuts.length} />
+        <Index products={prodcuts} />
         <Footer />
       </ScrollView> :
 
@@ -87,7 +93,7 @@ export default function Cart() {
         showsVerticalScrollIndicator={false}
       >
         <NavBar />
-        <TitlePages title='Carrinho' numberProducts={dataProductsAPI.length} />
+        <TitlePages title='Carrinho' numberProducts={prodcuts.length} />
         <NotfoundProducts />
         <Footer />
       </ScrollView>

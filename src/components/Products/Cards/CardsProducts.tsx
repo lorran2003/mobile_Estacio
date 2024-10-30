@@ -47,11 +47,11 @@ export function CardsProducts({ product, openModal, index }: PropsCardsProducts)
     return (
 
         <View className='p-2 bg-zinc-50 rounded-md w-5/12 justify-center items-center h-auto'>
-            
-            <Pressable 
-            className='w-full h-56 sm:h-96'
-            onPress={() => openModal(index)}
-                >
+
+            <Pressable
+                className='w-full h-56 sm:h-96'
+                onPress={() => openModal(index)}
+            >
                 <Image
                     source={{ uri: product.image }}
                     className='w-full h-full rounded-md'

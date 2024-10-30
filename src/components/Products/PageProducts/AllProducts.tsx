@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Text, View } from 'react-native'
 import { CardsProducts } from '../Cards/CardsProducts'
-import { PageNavigation } from '../Navigation/PageNavigation';
+import { PageNavigation } from '../../Navigation/PageNavigation';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../../Modal/ModalInfoProduct';
 

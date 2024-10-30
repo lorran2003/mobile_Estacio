@@ -14,7 +14,7 @@ export default function Favorite() {
 
     const [loading, setLoading] = useState(true);
     const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
-    const [request, setRequest] = useState<boolean>();
+    const [request, setRequest] = useState<boolean>(false);
 
     useEffect(() => {
 
@@ -81,7 +81,7 @@ export default function Favorite() {
                 <Index products={dataProductsAPI} />
                 <Footer />
             </ScrollView> :
-            
+
             <ScrollView
                 className="bg-neutral-200 flex-1"
                 showsVerticalScrollIndicator={false}

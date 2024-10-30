@@ -50,7 +50,7 @@ export function Index({ products }: { products: PropsAPI[] }) {
   }
 
   return (
-    <View className='h-screen w-full justify-center items-center'>
+    <View className=' py-10 w-full justify-center items-center'>
       <Text>Carrinho vaio</Text>
     </View>
   )

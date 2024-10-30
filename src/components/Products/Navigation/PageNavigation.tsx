@@ -1,19 +1,18 @@
+import { lastPage, nextPage, previousPage, startPage } from '@/src/func/pagination';
+import { PropsAPI } from '@/src/type/typeAPI';
 import { AntDesign } from '@expo/vector-icons';
 import { useState } from 'react';
-import { View, Text, Pressable, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 interface PropsPageNavigation {
-    totalProducts: number;
-    nextPage: (quantityOfProductsRender: number) => void;
-    previousPage: (quantityOfProductsRender: number) => void;
-    lastPage: (totalQuantityOfProducts: number) => void;
-    startPage: () => void;
+    products: PropsAPI[];
+    setRenderProducts: React.Dispatch<React.SetStateAction<PropsAPI[]>>;
 }
 
-export function PageNavigation({ totalProducts, nextPage, previousPage, lastPage, startPage }: PropsPageNavigation) {
+export function PageNavigation({ products, setRenderProducts }: PropsPageNavigation) {
 
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const totalPages: number = Math.ceil(totalProducts / 4);
+    const totalPages: number = Math.ceil(products.length / 4);
 
     const handlePageNavigation = (action: string) => {
 
@@ -21,22 +20,22 @@ export function PageNavigation({ totalProducts, nextPage, previousPage, lastPage
 
             case 'start':
                 setCurrentPage(1);
-                startPage();
+                setRenderProducts(startPage(products));
                 break;
 
             case 'previous':
                 setCurrentPage(currentPage - 1);
-                previousPage(currentPage * 4);
+                setRenderProducts(previousPage(currentPage * 4, products));
                 break;
 
             case 'next':
                 setCurrentPage(currentPage + 1);
-                nextPage(currentPage * 4);
+                setRenderProducts(nextPage(currentPage * 4, products));
                 break;
 
             case 'last':
                 setCurrentPage(totalPages);
-                lastPage(totalPages * 4);
+                setRenderProducts(lastPage(totalPages * 4, products));
                 break;
 
             default:

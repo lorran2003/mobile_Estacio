@@ -1,10 +1,8 @@
 import { View } from 'react-native';
 import { CardsProducts } from '../Cards/CardsProducts';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../../Modal/ModalInfoProduct';
-
-let currentIndex: number = 0;
 
 export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] }) {
 
@@ -12,7 +10,9 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
   const [visible, setVisible] = useState<boolean>(false);
 
-  const [index, setIndex] = useState<number>(0);
+  const indexNewProducts = useRef<number>(0)
+
+  const [indexProductHandle, setIndexProductHandle] = useState<number>(0);
 
   useEffect(() => {
 
@@ -22,12 +22,12 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
         const arrayProducts: PropsAPI[] = new Array();
 
-        if (currentIndex < dataProducts.length && currentIndex != 0) {
+        if (indexNewProducts.current < dataProducts.length && indexNewProducts.current != 0) {
 
           for (let index = 0; index < 4; index++) {
 
-            arrayProducts.push(dataProducts[currentIndex]);
-            currentIndex++;
+            arrayProducts.push(dataProducts[indexNewProducts.current]);
+            indexNewProducts.current = indexNewProducts.current + 1;
 
           }
 
@@ -35,12 +35,13 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
         } else {
 
-          currentIndex = 0;
+          indexNewProducts.current = 0;
 
           for (let index = 0; index < 4; index++) {
 
-            arrayProducts.push(dataProducts[currentIndex]);
-            currentIndex++;
+            arrayProducts.push(dataProducts[indexNewProducts.current]);
+
+            indexNewProducts.current = indexNewProducts.current + 1;
 
           }
 
@@ -54,7 +55,7 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
   });
 
   const openModal = (index: number) => {
-    setIndex(index);
+    setIndexProductHandle(index);
     setVisible(true);
   }
   const closeModal = () => {
@@ -65,11 +66,13 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
     <View className={'w-full ' + (visible ? ' blur-sm ' : null)}>
 
-      <ModalInfoProduct product={cards[index]} visible={visible} closeModal={closeModal} />
+      <ModalInfoProduct product={cards[indexProductHandle]} visible={visible} closeModal={closeModal} />
 
       <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
         {
+
           cards.map((item, index) => <CardsProducts key={item.id} product={item} openModal={openModal} index={index} />)
+
         }
       </View>
     </View>

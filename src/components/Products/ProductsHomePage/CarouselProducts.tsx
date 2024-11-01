@@ -1,8 +1,9 @@
 import { View } from 'react-native';
 import { CardsProducts } from '../Cards/CardsProducts';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../../Modal/ModalInfoProduct';
+import { useFocusEffect } from 'expo-router';
 
 export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] }) {
 
@@ -14,45 +15,49 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
   const [indexProductHandle, setIndexProductHandle] = useState<number>(0);
 
-  useEffect(() => {
+  useFocusEffect(
 
-    const interval = setInterval(() => {
+    useCallback(() => {
 
-      if (!visible) {
+      const interval = setInterval(() => {
 
-        const arrayProducts: PropsAPI[] = new Array();
+        if (!visible) {
 
-        if (indexNewProducts.current < dataProducts.length && indexNewProducts.current != 0) {
+          const arrayProducts: PropsAPI[] = new Array();
 
-          for (let index = 0; index < 4; index++) {
+          if (indexNewProducts.current < dataProducts.length && indexNewProducts.current != 0) {
 
-            arrayProducts.push(dataProducts[indexNewProducts.current]);
-            indexNewProducts.current = indexNewProducts.current + 1;
+            for (let index = 0; index < 4; index++) {
 
+              arrayProducts.push(dataProducts[indexNewProducts.current]);
+              indexNewProducts.current = indexNewProducts.current + 1;
+
+            }
+
+            setCards(arrayProducts);
+
+          } else {
+
+            indexNewProducts.current = 0;
+
+            for (let index = 0; index < 4; index++) {
+
+              arrayProducts.push(dataProducts[indexNewProducts.current]);
+
+              indexNewProducts.current = indexNewProducts.current + 1;
+
+            }
+
+            setCards(arrayProducts);
           }
-
-          setCards(arrayProducts);
-
-        } else {
-
-          indexNewProducts.current = 0;
-
-          for (let index = 0; index < 4; index++) {
-
-            arrayProducts.push(dataProducts[indexNewProducts.current]);
-
-            indexNewProducts.current = indexNewProducts.current + 1;
-
-          }
-
-          setCards(arrayProducts);
         }
-      }
+      }, 6000)
 
-    }, 5000);
+      return () => clearInterval(interval);
 
-    return () => clearInterval(interval);
-  });
+    }, [])
+
+  )
 
   const openModal = (index: number) => {
     setIndexProductHandle(index);

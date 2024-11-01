@@ -51,7 +51,11 @@ export default function Index() {
             <Loading />
           </View> :
           <>
-            <Carousel dataProducts={dataProductsAPI} />
+            {
+              dataProductsAPI.length > 0 && (
+                <Carousel dataProducts={dataProductsAPI} />
+              )
+            }
             <ProductsHome dataProducts={dataProductsAPI} />
           </>
       }

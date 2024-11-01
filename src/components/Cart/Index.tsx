@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { View, Text, Pressable } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { PageNavigation } from '../Navigation/PageNavigation';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../Modal/ModalInfoProduct';
 import { addToCart } from '@/src/API/Cart/addToCart';
+import { removeAllToCart } from '@/src/API/Cart/removeAllToCart';
+import { router } from 'expo-router';
 
 export function Index({ products }: { products: PropsAPI[] }) {
 
@@ -14,10 +16,16 @@ export function Index({ products }: { products: PropsAPI[] }) {
 
     const [index, setIndex] = useState<number>(0);
 
-    const handleButton = (action : string) => {
-        
-        if(action === 'addCart') {
-            addToCart({product:products});
+    const handleButton = (action: string) => {
+
+        if (action === 'buy') {
+            console.log('comprar');
+        }
+        else if (action === 'deleteAllToCart') {
+            console.log(products);
+            removeAllToCart();
+            alert("Todos os itens foram excluidos do carrinho");
+            router.replace("/(tabs)/");
         }
     }
 
@@ -25,7 +33,7 @@ export function Index({ products }: { products: PropsAPI[] }) {
         setIndex(index);
         setVisible(true);
     }
-    
+
     const closeModal = () => {
         setVisible(false);
     }
@@ -44,16 +52,19 @@ export function Index({ products }: { products: PropsAPI[] }) {
                 </View>
 
                 <PageNavigation products={products} setRenderProducts={setRenderProducts} />
-              
+
                 <View className='flex-row gap-5 justify-center items-center'>
 
-                    <Pressable className='bg-[#CA9D37] rounded-lg p-2 w-40 h-14 justify-center items-center '>
+                    <TouchableOpacity className='bg-[#CA9D37] rounded-lg p-2 w-40 h-14 justify-center items-center '>
                         <Text className='text-zinc-50 text-center'>Checkout</Text>
-                    </Pressable>
+                    </TouchableOpacity>
 
-                    <Pressable className='bg-zinc-50 rounded-lg p-2 w-40 h-14 justify-center items-center '>
-                        <Text className='text-zinc-800 text-center'>Apagar carinho</Text>
-                    </Pressable>
+                    <TouchableOpacity
+                        className='bg-zinc-50 rounded-lg p-2 w-40 h-14 justify-center items-center '
+                        onPress={() => handleButton('deleteAllToCart')}
+                    >
+                        <Text className='text-zinc-800 text-center'>Apagar carrinho</Text>
+                    </TouchableOpacity>
 
                 </View>
             </View>

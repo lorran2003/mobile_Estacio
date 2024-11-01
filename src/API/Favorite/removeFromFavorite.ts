@@ -1,7 +1,7 @@
 import { PropsAPI } from "../../type/typeAPI";
 import { arrayFav } from "./addFromFavorite";
 
-export const removeProductsFavoriteList = async ({ product }: { product: PropsAPI }) => {
+export const removeProductsFavoriteList = async (product: PropsAPI | PropsAPI[]) => {
     try {
 
         // const url: URL = new URL('http://192.168.1.245:3000/products');
@@ -14,10 +14,14 @@ export const removeProductsFavoriteList = async ({ product }: { product: PropsAP
 
         // return data;
 
+        const arrayProduct = Array.isArray(product) ? product : [product];
+
         arrayFav.forEach((item, index) => {
-            item.id === product.id && arrayFav.splice(index, index + 1);
+            arrayProduct.forEach((product) => {
+                item.id === product.id && arrayFav.splice(index, index + 1)
+            })
         });
-        return;
+
     }
     catch {
 

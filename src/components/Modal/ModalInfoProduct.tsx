@@ -25,7 +25,7 @@ export function ModalInfoProduct({ product, visible, closeModal }: PropsModalBuy
   const addProductToCart = async ({ product }: { product: PropsAPI }) => {
     try {
 
-      await addToCart({ product });
+      await addToCart(product);
       Alert.alert("Produto adicionado ao carrinho!");
       closeModal();
 

@@ -1,10 +1,12 @@
-import { View, Text, Pressable } from 'react-native'
-import { useEffect, useState } from 'react';
-import { TitlePages } from '../TitlePages';
+import { View, Text, TouchableOpacity } from 'react-native'
+import { useState } from 'react';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PageNavigation } from '../Navigation/PageNavigation';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../Modal/ModalInfoProduct';
+import { addToCart } from '@/src/API/Cart/addToCart';
+import { removeProductsFavoriteList } from '@/src/API/Favorite/removeFromFavorite';
+import { router } from 'expo-router';
 
 export function Index({ products }: { products: PropsAPI[] }) {
 
@@ -22,6 +24,19 @@ export function Index({ products }: { products: PropsAPI[] }) {
     setVisible(false);
   }
 
+  const handleButton = (action: string) => {
+
+    if (action === 'addToCart') {
+        addToCart(products);
+        alert("Adicionado ao carrinho");
+    }
+    else if (action === 'deleteAllFavorite') {
+        removeProductsFavoriteList(products);
+        alert("Todos os itens foram excluidos do carrinho");
+        router.replace("/(tabs)/");
+    }
+}
+
   if (products.length > 0) {
     return (
       <View className='gap-5'>
@@ -36,16 +51,22 @@ export function Index({ products }: { products: PropsAPI[] }) {
 
 
         <PageNavigation products={products} setRenderProducts={setRenderProducts} />
-      
+
         <View className='flex-row gap-5 justify-center items-center'>
 
-          <Pressable className='bg-[#CA9D37] rounded-lg p-2 w-40 h-14 justify-center items-center '>
+          <TouchableOpacity
+            className='bg-[#CA9D37] rounded-lg p-2 w-40 h-14 justify-center items-center '
+            onPress={() => handleButton('addToCart')}
+          >
             <Text className='text-zinc-50 text-center'>Adicionar ao carrinho</Text>
-          </Pressable>
+          </TouchableOpacity>
 
-          <Pressable className='bg-zinc-50 rounded-lg p-2 w-40 h-14 justify-center items-center '>
+          <TouchableOpacity 
+          className='bg-zinc-50 rounded-lg p-2 w-40 h-14 justify-center items-center '
+          onPress={() => handleButton('deleteAllFavorite')}
+          >
             <Text className='text-zinc-800 text-center'>Apagar favoritos</Text>
-          </Pressable>
+          </TouchableOpacity>
 
         </View>
       </View>

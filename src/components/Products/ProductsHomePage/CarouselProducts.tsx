@@ -20,7 +20,7 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
     useCallback(() => {
 
       const interval = setInterval(() => {
-
+        
         if (!visible) {
 
           const arrayProducts: PropsAPI[] = new Array();
@@ -55,7 +55,7 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
       return () => clearInterval(interval);
 
-    }, [])
+    }, [visible])
 
   )
 

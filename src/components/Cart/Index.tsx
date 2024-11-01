@@ -4,6 +4,7 @@ import { PageNavigation } from '../Navigation/PageNavigation';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../Modal/ModalInfoProduct';
+import { addToCart } from '@/src/API/Cart/addToCart';
 
 export function Index({ products }: { products: PropsAPI[] }) {
 
@@ -12,6 +13,13 @@ export function Index({ products }: { products: PropsAPI[] }) {
     const [visible, setVisible] = useState<boolean>(false);
 
     const [index, setIndex] = useState<number>(0);
+
+    const handleButton = (action : string) => {
+        
+        if(action === 'addCart') {
+            addToCart({product:products});
+        }
+    }
 
     const openModal = (index: number) => {
         setIndex(index);

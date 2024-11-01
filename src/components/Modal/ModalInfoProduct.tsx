@@ -3,7 +3,7 @@ import { AntDesign } from '@expo/vector-icons';
 import * as Notification from "expo-notifications"
 import { PropsAPI } from '@/src/type/typeAPI';
 import { TitlePages } from '../TitlePages';
-import { addToCart } from '@/src/API/cart/addToCart';
+import { addToCart } from '@/src/API/Cart/addToCart';
 
 interface PropsModalBuy {
   product: PropsAPI;

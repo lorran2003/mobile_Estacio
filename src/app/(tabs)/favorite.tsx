@@ -1,4 +1,4 @@
-import { getFavoriteProducts } from "@/src/API/favoriteProducts/getFavoriteProducts";
+import { getFavoriteProducts } from "@/src/API/Favorite/getFavoriteProducts";
 import { Index } from "@/src/components/Favorite/Index";
 import { Footer } from "@/src/components/Footer";
 import { CardsLoad } from "@/src/components/Loading/CardsLoad";

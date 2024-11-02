@@ -1,5 +1,5 @@
 import { setStatusBarBackgroundColor } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { Banner } from "@/src/components/Banner";
 import { NavBar } from "@/src/components/NavBar";
@@ -10,32 +10,40 @@ import { ProductsHome } from "@/src/components/Products/ProductsHomePage/Product
 import { Footer } from "@/src/components/Footer";
 import { PropsAPI } from "@/src/type/typeAPI";
 import { getProducts } from "@/src/API/getProducts";
+import { useFocusEffect } from "expo-router";
 
 export default function Index() {
 
   const [loading, setLoading] = useState(true);
   const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
 
-  useEffect(() => {
+  useFocusEffect(
 
-    setStatusBarBackgroundColor('#18181b', true);
+    useCallback(() => {
 
-    const fetchProducts = async () => {
-
-      const data = await getProducts();
-
-      setLoading(false);
-
-      if (data) {
-        setDataProductsAPI(data);
-        return;
+      setStatusBarBackgroundColor('#18181b', true);
+      
+      const fetchProducts = async () => {
+        
+        const data = await getProducts();
+        
+        if (data) {
+          setDataProductsAPI(data);
+        }
+        
+        setLoading(false);
+           
       }
+      
+      fetchProducts();
 
-    }
-
-    fetchProducts();
-
-  }, [])
+      return(() => {
+        setLoading(true);
+        setDataProductsAPI([]);
+      });
+      
+    },[])
+  )
 
   return (
     <ScrollView

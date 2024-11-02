@@ -39,7 +39,10 @@ export default function Favorite() {
 
             fetchProducts();
 
-            return () => setLoading(true);
+            return () => {
+                setLoading(true);
+                setDataProductsAPI([]);
+            }
             
         }, [])
     )

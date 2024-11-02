@@ -6,9 +6,9 @@ import NotfoundProducts from '@/src/components/Products/NotFound/NotfoundProduct
 import { AllProducts } from '@/src/components/Products/PageProducts/AllProducts';
 import { TitlePages } from '@/src/components/TitlePages';
 import { PropsAPI } from '@/src/type/typeAPI';
-import { useEffect, useState } from 'react'
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useState } from 'react'
 import { ScrollView, View } from 'react-native';
-
 
 export default function Products() {
 
@@ -16,27 +16,35 @@ export default function Products() {
   const [dataProductsAPI, setDataProductsAPI] = useState<PropsAPI[]>([]);
   const [request, setRequest] = useState<boolean>();
 
-  useEffect(() => {
+  useFocusEffect(
 
-    const fetchProducts = async () => {
+    useCallback(() => {
 
-      const data = await getProducts();
+      const fetchProducts = async () => {
 
-      if (data) {
-        setDataProductsAPI(data);
-        setRequest(true);
+        const data = await getProducts();
+
+        if (data) {
+          setDataProductsAPI(data);
+          setRequest(true);
+        }
+        else {
+          setRequest(false);
+        }
+
+        setLoading(false);
+
       }
-      else {
-        setRequest(false);
-      }
 
-      setLoading(false);
+      fetchProducts();
 
-    }
+      return (() => {
+        setLoading(true);
+        setRequest(undefined);
+      })
 
-    fetchProducts();
-
-  }, [])
+    }, [])
+  );
 
   if (loading) {
 

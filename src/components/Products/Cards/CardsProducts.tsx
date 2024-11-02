@@ -32,7 +32,7 @@ export function CardsProducts({ product, openModal, index }: PropsCardsProducts)
 
         if (favorite) {
             setFavorite(false);
-            removeProductsFavoriteList(product)
+            removeProductsFavoriteList(product);
             setIconHeart(<AntDesign name="hearto" size={22} color="black" />);
             return;
         }
@@ -42,7 +42,7 @@ export function CardsProducts({ product, openModal, index }: PropsCardsProducts)
         setIconHeart(<AntDesign name="heart" size={22} color="red" />);
         return;
 
-    }
+    };
 
     return (
 

@@ -16,12 +16,15 @@ export const removeProductsFavoriteList = async (product: PropsAPI | PropsAPI[])
 
         const arrayProduct = Array.isArray(product) ? product : [product];
 
-        arrayFav.forEach((item, index) => {
-            arrayProduct.forEach((product) => {
-                item.id === product.id && arrayFav.splice(index, index + 1)
-            })
-        });
+        const arrayRemove = arrayFav
+            .filter((item) => arrayProduct
+                .some((product) => product.id === item.id));
 
+        for (let i = arrayFav.length - 1; i >= 0; i--) {
+            if (arrayRemove.some((product) => arrayFav[i].id === product.id)) {
+                arrayFav.splice(i, 1);  // Remove o item de arrayFav no índice atual
+            }
+        }
     }
     catch {
 

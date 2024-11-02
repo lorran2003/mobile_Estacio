@@ -45,7 +45,7 @@ export function Index({ products }: { products: PropsAPI[] }) {
 
         <View className='w-full justify-center items-center gap-5 flex-row flex-wrap pt-5'>
           {
-            products.map((item, index) => <CardsProducts key={item.id} product={item} index={index} openModal={openModal} />)
+            renderProducts.map((item, index) => <CardsProducts key={item.id} product={item} index={index} openModal={openModal} />)
           }
         </View>
 

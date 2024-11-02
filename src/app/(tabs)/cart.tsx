@@ -13,7 +13,7 @@ import { ScrollView, View } from "react-native";
 export default function Cart() {
 
   const [loading, setLoading] = useState(true);
-  const [prodcuts, setProducts] = useState<PropsAPI[]>([]);
+  const [products, setProducts] = useState<PropsAPI[]>([]);
   const [request, setRequest] = useState<boolean>();
 
   useFocusEffect(
@@ -37,8 +37,11 @@ export default function Cart() {
 
       fetchProducts();
 
-      return () =>  setLoading(true);
-      
+      return () => {
+        setLoading(true);
+        setProducts([]);
+      }
+
     }, [])
 
   );
@@ -53,7 +56,7 @@ export default function Cart() {
 
         <NavBar />
 
-        <TitlePages title='Carrinho' numberProducts={prodcuts.length} />
+        <TitlePages title='Carrinho' numberProducts={products.length} />
 
         <View className='animate-pulse pt-5'>
 
@@ -83,8 +86,8 @@ export default function Cart() {
         showsVerticalScrollIndicator={false}
       >
         <NavBar />
-        <TitlePages title='Carrinho' numberProducts={prodcuts.length} />
-        <Index products={prodcuts} />
+        <TitlePages title='Carrinho' numberProducts={products.length} />
+        <Index products={products} />
         <Footer />
       </ScrollView> :
 
@@ -93,7 +96,7 @@ export default function Cart() {
         showsVerticalScrollIndicator={false}
       >
         <NavBar />
-        <TitlePages title='Carrinho' numberProducts={prodcuts.length} />
+        <TitlePages title='Carrinho' numberProducts={products.length} />
         <NotfoundProducts />
         <Footer />
       </ScrollView>

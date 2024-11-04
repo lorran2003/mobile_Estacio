@@ -13,7 +13,8 @@ const AuthContextTag = createContext<SessionUser>({
     'image': null,
     signIn: () => null,
     signOut: () => null,
-    pickImage: () => null
+    pickImage: () => null,
+    takePicture: () => null
 });
 
 // This hook can be used to access the user info.
@@ -92,6 +93,19 @@ export default function AuthContext({ children }: PropsWithChildren) {
                         aspect: [4, 3],
                         quality: 1,
                     });
+
+                    if (!result.canceled) {
+                        setImage(result.assets[0].uri);
+                    }
+                },
+                takePicture: async () => {
+
+                    let result = await ImagePicker.launchCameraAsync({
+                        mediaTypes: ImagePicker.MediaTypeOptions.All,
+                        allowsEditing: true,
+                        aspect: [4, 3],
+                        quality: 1,
+                    })
 
                     if (!result.canceled) {
                         setImage(result.assets[0].uri);

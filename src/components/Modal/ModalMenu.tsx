@@ -2,6 +2,7 @@ import { Animated, Dimensions, Image, Modal, Pressable, ScrollView, StyleSheet, 
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useSession } from '../AuthContext';
+import { useRouterUser } from '@/src/hooks/useRouterUser';
 
 interface PropsModalMenu {
     visible: boolean;
@@ -13,6 +14,8 @@ export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
 
     const { image, user } = useSession();
 
+    const routerUser  = useRouterUser();
+
     const pressButton = (props: string) => {
         switch (props) {
 
@@ -22,7 +25,7 @@ export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
                 break;
 
             case "profile":
-                router.push("/(tabs)/user/login");
+                router.push(routerUser);
                 closeModal();
                 break;
 

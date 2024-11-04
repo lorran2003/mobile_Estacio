@@ -1,12 +1,18 @@
 import { Text, TextInput, View } from 'react-native'
 
-export function Input({ label }: { label: string }) {
+interface PropsInput {
+    label : string;
+    onChangeText: (text: string) => void;
+}
+
+export function Input({ label, onChangeText }: PropsInput) {
     return (
         <View className='gap-2 justify-center items-centers'>
             <Text className='text-xl opacity-60'>{label}</Text>
             <TextInput
                 cursorColor={'#000'}
                 className='rounded-lg border border-[#CA9D37] w-72 h-12 p-2'
+                onChangeText={(text) => onChangeText(text)}
             />
         </View>
     )

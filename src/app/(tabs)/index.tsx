@@ -1,5 +1,5 @@
 import { setStatusBarBackgroundColor } from "expo-status-bar";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { Banner } from "@/src/components/Banner";
 import { NavBar } from "@/src/components/NavBar";
@@ -11,6 +11,7 @@ import { Footer } from "@/src/components/Footer";
 import { PropsAPI } from "@/src/type/typeAPI";
 import { getProducts } from "@/src/API/getProducts";
 import { useFocusEffect } from "expo-router";
+
 
 export default function Index() {
 

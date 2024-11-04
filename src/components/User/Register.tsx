@@ -41,7 +41,7 @@ export function RegisterUser() {
           <Text className='text-zinc-50 font-semibold text-xl'>Registrar</Text>
         </Pressable>
 
-        <Link href={'/(user)/login'}>
+        <Link href={'/user/login'}>
           <Text className='text-zinc-800/60 underline'>
           Já possui conta? Logue aqui
           </Text>

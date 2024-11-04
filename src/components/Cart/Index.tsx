@@ -22,7 +22,6 @@ export function Index({ products }: { products: PropsAPI[] }) {
             console.log('comprar');
         }
         else if (action === 'deleteAllToCart') {
-            console.log(products);
             removeAllToCart(products);
             alert("Todos os itens foram excluidos do carrinho");
             router.replace("/(tabs)/");

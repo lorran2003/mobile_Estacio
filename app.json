@@ -34,7 +34,8 @@
           "icon": "./src/assets/images/logo.jpg",
           "color": "#ffffff"
         }
-      ]
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true

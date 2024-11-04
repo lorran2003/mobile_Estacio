@@ -1,9 +1,10 @@
+import AuthContext from '@/src/components/AuthContext';
 import { ModalMenu } from '@/src/components/Modal/ModalMenu';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { useRef, useState } from 'react';
-import { Animated, Dimensions, Pressable } from 'react-native';
+import { Animated, Dimensions, Pressable, View } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -34,7 +35,7 @@ export default function TabsLayout() {
 
 
   return (
-    <>
+    <AuthContext>
 
       <ModalMenu closeModal={closeModal} translateX={translateX} visible={visible} />
 
@@ -96,7 +97,7 @@ export default function TabsLayout() {
           }
         />
         <Tabs.Screen
-          name='(user)'
+          name='user'
           options={
             {
               title: "Perfil",
@@ -124,7 +125,7 @@ export default function TabsLayout() {
         />
       </Tabs>
 
-    </>
+    </AuthContext>
 
   )
 }

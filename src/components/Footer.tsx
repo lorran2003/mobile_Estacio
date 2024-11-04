@@ -1,8 +1,12 @@
 import { AntDesign, FontAwesome } from '@expo/vector-icons'
 import { Link } from 'expo-router'
 import { View, Text } from 'react-native'
+import { useRouterUser } from '../hooks/useRouterUser';
 
 export function Footer() {
+
+    const routerUser  = useRouterUser();
+
     return (
         <View className='w-full h-40 justify-center items-center gap-3'>
 
@@ -25,7 +29,7 @@ export function Footer() {
                 <Text className='text-zinc-800/70'>Promos</Text>
 
                 <Link
-                    href={'/(user)/login'}
+                    href={routerUser}
                     className='text-zinc-800/70'
                 >
                     Minha conta

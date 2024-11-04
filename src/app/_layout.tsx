@@ -4,14 +4,12 @@ import { View } from "react-native";
 
 import '../style/global.css'
 
-const statusBarHeigth = Constants.statusBarHeight;
-
 export default function RootLayout() {
 
+  // Configure o contexto de autenticação e renderize nosso layout dentro dele.
   return (
-
     <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="+not-found" />
     </Stack>
   );

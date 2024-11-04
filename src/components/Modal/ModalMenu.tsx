@@ -1,9 +1,7 @@
 import { Animated, Dimensions, Image, Modal, Pressable, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
-
-const imageDefault = require('@/src/assets/images/imageDefaultUser.jpg');
-
+import { useSession } from '../AuthContext';
 
 interface PropsModalMenu {
     visible: boolean;
@@ -12,6 +10,8 @@ interface PropsModalMenu {
 }
 
 export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
+
+    const { image, user } = useSession();
 
     const pressButton = (props: string) => {
         switch (props) {
@@ -22,7 +22,7 @@ export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
                 break;
 
             case "profile":
-                router.replace("/(tabs)/(user)/login");
+                router.replace("/(tabs)/user/login");
                 closeModal();
                 break;
 
@@ -67,16 +67,17 @@ export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
                             contentContainerStyle={{ gap: 40 }}
                         >
 
+
                             <View className='w-full justify-center items-center gap-5'>
 
                                 <View className='w-40 h-40 rounded-full border border-[#CA9D37] bg-zinc-50'>
                                     <Image
-                                        source={imageDefault}
+                                        source={image ? { uri: image } : require('@/src/assets/images/imageDefaultUser.jpg')}
                                         className='w-full h-full rounded-full'
                                     />
                                 </View>
 
-                                <Text className='font-semibold text-xl text-zinc-800'>Name</Text>
+                                <Text className='font-semibold text-xl text-zinc-800'>{user?.name ?? "Usuário"}</Text>
                             </View>
 
                             <View className='justify-center items-start pb-10 border-b-2 border-solid border-[#CA9D37] w-full gap-5' >

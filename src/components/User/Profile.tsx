@@ -1,13 +1,16 @@
-import { View, Text, Pressable, Image } from 'react-native';
+import { View, Text, Pressable, Image, TouchableOpacity } from 'react-native';
 import { TitlePages } from '../TitlePages';
 import { Entypo } from '@expo/vector-icons';
+import { Redirect } from 'expo-router';
+import { useSession } from '../AuthContext';
 
 export function ProfileUser() {
 
-    const imageDefault = require('@/src/assets/images/imageDefaultUser.jpg');
 
-    const editPhoto = () => {
-        
+    const { user, signOut, session, image, pickImage } = useSession();
+
+    if (!session) {
+        return <Redirect href={'/(tabs)/user/login'} />
     }
 
     return (
@@ -21,32 +24,35 @@ export function ProfileUser() {
                 <View className='relative'>
                     <View className='w-40 h-40 rounded-full border border-[#CA9D37] bg-zinc-50'>
                         <Image
-                            source={imageDefault}
+                            source={ image ? { uri: image } : require('@/src/assets/images/imageDefaultUser.jpg')}
                             className='w-full h-full rounded-full'
                         />
                     </View>
 
                     <Pressable
                         className='z-10 absolute rounded-full bg-neutral-200 p-2 bottom-0 right-0'
-                        onPress={() => editPhoto()}
+                        onPress={() => pickImage()}
                     >
                         <Entypo name="edit" size={24} color="black" />
                     </Pressable>
                 </View>
 
-                <Text className='text-zinc-800'>Name</Text>
+                <Text className='text-zinc-800'>{user?.name}</Text>
 
-                <Text className='text-zinc-800'>Email</Text>
+                <Text className='text-zinc-800'>{user?.email}</Text>
 
                 <View className='gap-5'>
 
-                    <Pressable className='bg-[#CA9D37] rounded-md p-2 w-fit' >
+                    <TouchableOpacity className='bg-[#CA9D37] rounded-md p-2 w-fit' >
                         <Text className='text-zinc-50 text-lg'>Editar Perfil</Text>
-                    </Pressable>
+                    </TouchableOpacity>
 
-                    <Pressable className='bg-neutral-200 rounded-md p-2 items-center justify-center'>
+                    <TouchableOpacity
+                        className='bg-neutral-200 rounded-md p-2 items-center justify-center'
+                        onPress={() => signOut()}
+                    >
                         <Text>Sair</Text>
-                    </Pressable>
+                    </TouchableOpacity>
 
                 </View>
 

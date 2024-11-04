@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  className="flex-row justify-between items-center w-full p-5"
+>
+  <Text
+    href="/"
+    onPress={[Function]}
+    role="link"
+  >
+    <View
+      className="size-24 items-center justify-center rounded-full border-solid border-[#CA9D37] border"
+    >
+      <Image
+        source={1}
+        style={
+          {
+            "borderRadius": 9999,
+            "height": "100%",
+            "objectFit": "cover",
+            "width": "100%",
+          }
+        }
+      />
+    </View>
+  </Text>
+  <View
+    className="flex-row gap-2"
+  >
+    <Text
+      href="/user/login"
+      onPress={[Function]}
+      role="link"
+    >
+      <View
+        className="border-solid border-[#CA9D37] border bg-zinc-50 p-2 rounded-full"
+      >
+        <Text />
+      </View>
+    </Text>
+    <Text
+      href="/cart"
+      onPress={[Function]}
+      role="link"
+    >
+      <View
+        className="border-solid border-[#CA9D37] border bg-zinc-50 p-2 rounded-full"
+      >
+        <Text />
+      </View>
+    </Text>
+  </View>
+</View>
+`;

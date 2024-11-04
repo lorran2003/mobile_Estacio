@@ -3,7 +3,8 @@ import { CardsProducts } from '../Cards/CardsProducts';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../../Modal/ModalInfoProduct';
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
+import { useSession } from '../../AuthContext';
 
 export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] }) {
 
@@ -15,12 +16,14 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
 
   const [indexProductHandle, setIndexProductHandle] = useState<number>(0);
 
+  const { session } = useSession();
+
   useFocusEffect(
 
     useCallback(() => {
 
       const interval = setInterval(() => {
-        
+
         if (!visible) {
 
           const arrayProducts: PropsAPI[] = new Array();
@@ -60,6 +63,12 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
   )
 
   const openModal = (index: number) => {
+
+    if (!session) {
+      router.replace('/(tabs)/user/login');
+      return;
+    }
+
     setIndexProductHandle(index);
     setVisible(true);
   }

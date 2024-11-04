@@ -4,6 +4,8 @@ import { CardsProducts } from '../Cards/CardsProducts'
 import { PageNavigation } from '../../Navigation/PageNavigation';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../../Modal/ModalInfoProduct';
+import { useSession } from '../../AuthContext';
+import { router } from 'expo-router';
 
 export function AllProducts({ products }: { products: PropsAPI[] }) {
 
@@ -13,7 +15,14 @@ export function AllProducts({ products }: { products: PropsAPI[] }) {
 
   const [index, setIndex] = useState<number>(0);
 
+  const { session } = useSession();
+
   const openModal = (index: number) => {
+
+    if (!session) {
+      router.replace('/(tabs)/user/login');
+      return;
+    }
     setIndex(index);
     setVisible(true);
   }
@@ -30,7 +39,7 @@ export function AllProducts({ products }: { products: PropsAPI[] }) {
 
         <View className='w-full justify-center items-center gap-5 flex-row flex-wrap'>
           {
-            
+
             renderProducts.map((item, index) => <CardsProducts key={item.id} product={item} index={index} openModal={openModal} />)
           }
         </View>

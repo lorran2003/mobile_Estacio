@@ -1,26 +1,17 @@
-import { View, Text, Modal, Image, Pressable, StyleSheet, ScrollView, Alert, TouchableOpacity } from 'react-native'
+import { View, Text, Modal, Image, Pressable, ScrollView, Alert, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
-import * as Notification from "expo-notifications"
 import { PropsAPI } from '@/src/type/typeAPI';
 import { TitlePages } from '../TitlePages';
 import { addToCart } from '@/src/API/Cart/addToCart';
+import { pushNotification } from '@/src/func/pushNotification';
 
-interface PropsModalBuy {
+interface PropsModal {
   product: PropsAPI;
   visible: boolean;
   closeModal: () => void;
 }
 
-Notification.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: false
-  })
-})
-
-
-export function ModalInfoProduct({ product, visible, closeModal }: PropsModalBuy) {
+export function ModalInfoProduct({ product, visible, closeModal }: PropsModal) {
 
   const addProductToCart = async ({ product }: { product: PropsAPI }) => {
     try {
@@ -123,20 +114,9 @@ export function ModalInfoProduct({ product, visible, closeModal }: PropsModalBuy
                 </View>
               </View>
             </View>
-
           </View>
         </View>
       </ScrollView>
     </Modal>
   )
-}
-
-const pushNotification = async () => {
-  await Notification.scheduleNotificationAsync({
-    content: {
-      title: 'ola mundo',
-      body: "Notificado com sucesso",
-    },
-    trigger: null
-  });
 };

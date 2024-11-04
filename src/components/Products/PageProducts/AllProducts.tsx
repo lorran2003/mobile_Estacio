@@ -20,7 +20,7 @@ export function AllProducts({ products }: { products: PropsAPI[] }) {
   const openModal = (index: number) => {
 
     if (!session) {
-      router.replace('/(tabs)/user/login');
+      router.push('/(tabs)/user/login');
       return;
     }
     setIndex(index);

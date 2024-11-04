@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Alert } from 'react-native'
 import { PageNavigation } from '../Navigation/PageNavigation';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../Modal/ModalInfoProduct';
-import { addToCart } from '@/src/API/Cart/addToCart';
 import { removeAllToCart } from '@/src/API/Cart/removeAllToCart';
 import { router } from 'expo-router';
+import { pushNotification } from '@/src/func/pushNotification';
 
 export function Index({ products }: { products: PropsAPI[] }) {
 
@@ -16,15 +16,17 @@ export function Index({ products }: { products: PropsAPI[] }) {
 
     const [index, setIndex] = useState<number>(0);
 
-    const handleButton = (action: string) => {
+    const handleButton = async (action: string) => {
 
         if (action === 'buy') {
-            console.log('comprar');
+            await pushNotification();
+            removeAllToCart(products);
+            router.push('/(tabs)/');
         }
         else if (action === 'deleteAllToCart') {
             removeAllToCart(products);
-            alert("Todos os itens foram excluidos do carrinho");
-            router.replace("/(tabs)/");
+            Alert.alert("Todos os itens foram excluidos do carrinho");
+            router.push("/(tabs)/");
         }
     }
 
@@ -54,8 +56,13 @@ export function Index({ products }: { products: PropsAPI[] }) {
 
                 <View className='flex-row gap-5 justify-center items-center'>
 
-                    <TouchableOpacity className='bg-[#CA9D37] rounded-lg p-2 w-40 h-14 justify-center items-center '>
-                        <Text className='text-zinc-50 text-center'>Checkout</Text>
+                    <TouchableOpacity
+                        className='bg-[#CA9D37] rounded-lg p-2 w-40 h-14 justify-center items-center '
+                        onPress={() => handleButton('buy')}
+                    >
+                        <Text className='text-zinc-50 text-center'>
+                            Checkout
+                        </Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity

@@ -15,11 +15,15 @@ export const addToCart = async (product: PropsAPI | PropsAPI[]) => {
         // const data: PropsAPI[] | undefined = await response.json();
 
         // return data;
-        
+
         const arrayProduct = Array.isArray(product) ? product : [product];
 
         arrayProduct.forEach((item) => {
-            arrayCart.push(item);
+            
+            if (!arrayCart.some((product) => product.id === item.id)) {
+
+                arrayCart.push(item);
+            }
         })
 
     }

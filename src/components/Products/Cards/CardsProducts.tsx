@@ -4,6 +4,8 @@ import { PropsAPI } from '@/src/type/typeAPI';
 import { AntDesign } from '@expo/vector-icons';
 import { addProductsFavoriteList, arrayFav } from '@/src/API/Favorite/addFromFavorite';
 import { removeProductsFavoriteList } from '@/src/API/Favorite/removeFromFavorite';
+import { useSession } from '../../AuthContext';
+import { router } from 'expo-router';
 
 interface PropsCardsProducts {
     product: PropsAPI;
@@ -14,6 +16,7 @@ interface PropsCardsProducts {
 
 export function CardsProducts({ product, openModal, index }: PropsCardsProducts) {
 
+    const { session } = useSession();
 
     const [favorite, setFavorite] = useState<boolean>(arrayFav.some(item => item.id === product.id));
 
@@ -29,6 +32,11 @@ export function CardsProducts({ product, openModal, index }: PropsCardsProducts)
     const [iconHeart, setIconHeart] = useState<any>(startIcon());
 
     const productFavorite = () => {
+
+        if (!session) {
+            router.push('/(tabs)/user/login');
+            return;
+        }
 
         if (favorite) {
             setFavorite(false);

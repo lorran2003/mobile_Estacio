@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Alert } from 'react-native'
 import { useState } from 'react';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PageNavigation } from '../Navigation/PageNavigation';
@@ -24,16 +24,16 @@ export function Index({ products }: { products: PropsAPI[] }) {
     setVisible(false);
   }
 
-  const handleButton = (action: string) => {
+  const handleButton = async (action: string) => {
 
     if (action === 'addToCart') {
-        addToCart(products);
-        alert("Adicionado ao carrinho");
+        await addToCart(products);
+        Alert.alert("Adicionado ao carrinho");
     }
     else if (action === 'deleteAllFavorite') {
-        removeProductsFavoriteList(products);
-        alert("Todos os itens foram excluidos do carrinho");
-        router.replace("/(tabs)/");
+        await removeProductsFavoriteList(products);
+        Alert.alert("Todos os itens foram excluidos do carrinho");
+        router.push("/(tabs)/");
     }
 }
 

@@ -17,22 +17,22 @@ export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
         switch (props) {
 
             case "home":
-                router.replace("/");
+                router.push("/");
                 closeModal();
                 break;
 
             case "profile":
-                router.replace("/(tabs)/user/login");
+                router.push("/(tabs)/user/login");
                 closeModal();
                 break;
 
             case "cart":
-                router.replace("/(tabs)/cart");
+                router.push("/(tabs)/cart");
                 closeModal();
                 break;
 
             case "favorite":
-                router.replace("/(tabs)/favorite");
+                router.push("/(tabs)/favorite");
                 closeModal();
                 break;
 

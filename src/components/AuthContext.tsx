@@ -82,7 +82,7 @@ export default function AuthContext({ children }: PropsWithChildren) {
                     setSession(false);
                     setUser(null);
                     setImage(null);
-                    router.replace('/(tabs)/');
+                    router.push('/(tabs)/');
                 },
                 pickImage: async () => {
                     // No permissions request is necessary for launching the image library

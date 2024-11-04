@@ -65,7 +65,7 @@ export function CarouselProducts({ dataProducts }: { dataProducts: PropsAPI[] })
   const openModal = (index: number) => {
 
     if (!session) {
-      router.replace('/(tabs)/user/login');
+      router.push('/(tabs)/user/login');
       return;
     }
 

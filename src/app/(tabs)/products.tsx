@@ -57,7 +57,6 @@ export default function Products() {
 
         <TitlePages
           title='Nossos produtos'
-          numberProducts={dataProductsAPI.length}
         />
 
         <View className='animate-pulse pt-5'>
@@ -88,7 +87,7 @@ export default function Products() {
         showsVerticalScrollIndicator={false}
       >
         <NavBar />
-        <TitlePages title='Nossos produtos' numberProducts={dataProductsAPI.length} />
+        <TitlePages title='Nossos produtos' numberProducts={dataProductsAPI} />
         <AllProducts products={dataProductsAPI} />
         <Footer />
       </ScrollView> :
@@ -98,7 +97,7 @@ export default function Products() {
         showsVerticalScrollIndicator={false}
       >
         <NavBar />
-        <TitlePages title='Nossos produtos' numberProducts={dataProductsAPI.length} />
+        <TitlePages title='Nossos produtos' />
         <NotfoundProducts />
         <Footer />
       </ScrollView>

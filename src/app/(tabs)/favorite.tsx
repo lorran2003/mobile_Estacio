@@ -56,7 +56,7 @@ export default function Favorite() {
             >
                 <NavBar />
 
-                <TitlePages title='Favoritos' numberProducts={dataProductsAPI.length} />
+                <TitlePages title='Favoritos' />
 
                 <View className='animate-pulse pt-5'>
 
@@ -86,7 +86,7 @@ export default function Favorite() {
                 showsVerticalScrollIndicator={false}
             >
                 <NavBar />
-                <TitlePages title='Favoritos' numberProducts={dataProductsAPI.length} />
+                <TitlePages title='Favoritos' numberProducts={dataProductsAPI} />
                 <Index products={dataProductsAPI} />
                 <Footer />
             </ScrollView> :
@@ -96,7 +96,7 @@ export default function Favorite() {
                 showsVerticalScrollIndicator={false}
             >
                 <NavBar />
-                <TitlePages title='Favoritos' numberProducts={dataProductsAPI.length} />
+                <TitlePages title='Favoritos' />
                 <NotfoundProducts />
                 <Footer />
             </ScrollView>

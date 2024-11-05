@@ -56,7 +56,7 @@ export default function Cart() {
 
         <NavBar />
 
-        <TitlePages title='Carrinho' numberProducts={products.length} />
+        <TitlePages title='Carrinho' />
 
         <View className='animate-pulse pt-5'>
 
@@ -86,7 +86,7 @@ export default function Cart() {
         showsVerticalScrollIndicator={false}
       >
         <NavBar />
-        <TitlePages title='Carrinho' numberProducts={products.length} />
+        <TitlePages title='Carrinho' numberProducts={products} />
         <Index products={products} />
         <Footer />
       </ScrollView> :
@@ -96,7 +96,7 @@ export default function Cart() {
         showsVerticalScrollIndicator={false}
       >
         <NavBar />
-        <TitlePages title='Carrinho' numberProducts={products.length} />
+        <TitlePages title='Carrinho' />
         <NotfoundProducts />
         <Footer />
       </ScrollView>

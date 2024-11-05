@@ -1,6 +1,27 @@
 import { View, Text } from 'react-native'
+import { PropsAPI } from '../type/typeAPI'
 
-export function TitlePages({ title, numberProducts, textElement }: { title: string, numberProducts?: number, textElement?: boolean }) {
+interface PropsTitlePages {
+    title: string
+    numberProducts?: PropsAPI[];
+}
+
+export function TitlePages({ title, numberProducts }: PropsTitlePages) {
+
+    const TextView = () => {
+
+        if (numberProducts && title === 'Carrinho') {
+            const arrayPrice = numberProducts.map(product => Number(product.price));
+            const totalPrice = arrayPrice.reduce((acc, cur) => acc + cur, 0);
+            return <Text className='text-zinc-800/70 font-medium text-lg pl-1'>Total de R$ {totalPrice.toFixed(2)}</Text>;
+        }
+
+        else if (numberProducts) {
+
+            return <Text className='text-zinc-800/70 font-medium text-lg pl-1'>Total de produtos {numberProducts.length}</Text>;
+        }
+    }
+
     return (
         <View className='bg-zinc-50 w-full p-6 '>
 
@@ -8,7 +29,7 @@ export function TitlePages({ title, numberProducts, textElement }: { title: stri
                 {title}
             </Text>
             {
-                textElement ? <Text className='text-zinc-800/50 '>total de ({numberProducts})</Text> : null
+                <TextView />
             }
 
         </View>

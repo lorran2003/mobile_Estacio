@@ -1,16 +1,19 @@
 import { DataUser } from "@/src/type/DataUser";
 
-export interface SignIn {
-    'email': string | null;
-    'password': string | null;
+export interface TypeRegisterUser {
+    'email': string;
+    'password': string;
+    'name': string;
+    'phone': string;
+    'cpf': string
 
 }
 
 
-export const signInUser = async (user: SignIn) => {
+export const registerUser = async (user: TypeRegisterUser) => {
     try {
 
-        const url: URL = new URL('https://localhost:5001/api/User/login');
+        const url: URL = new URL('https://localhost:5001/api/User/create-user');
 
         const response = await fetch(url, {
             method: "POST",
@@ -18,8 +21,7 @@ export const signInUser = async (user: SignIn) => {
             headers: { "Content-type": "application/json" },
             
         });
-        const data: DataUser  = await response.json();
-        console.log(data);
+        const data: string  = await response.json();
         return data
     }
     catch (e) {

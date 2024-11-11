@@ -1,11 +1,12 @@
 import { Text, TextInput, View } from 'react-native'
 
 interface PropsInput {
-    label : string;
+    label: string;
     onChangeText: (text: string) => void;
+    length?: number;
 }
 
-export function Input({ label, onChangeText }: PropsInput) {
+export function Input({ label, onChangeText, length }: PropsInput) {
     return (
         <View className='gap-2 justify-center items-centers'>
             <Text className='text-xl opacity-60'>{label}</Text>
@@ -13,6 +14,7 @@ export function Input({ label, onChangeText }: PropsInput) {
                 cursorColor={'#000'}
                 className='rounded-lg border border-[#CA9D37] w-72 h-12 p-2'
                 onChangeText={(text) => onChangeText(text)}
+
             />
         </View>
     )

@@ -61,7 +61,7 @@ export function CardsProducts({ product, openModal, index }: PropsCardsProducts)
                 onPress={() => openModal(index)}
             >
                 <Image
-                    source={{ uri: product.image }}
+                    source={{ uri: product.images[0].imagePath }}
                     className='w-full h-full rounded-md'
                 />
             </Pressable>
@@ -74,7 +74,7 @@ export function CardsProducts({ product, openModal, index }: PropsCardsProducts)
                     {product.name}
                 </Text>
 
-                <Text className='opacity-80 text-lg'>R$ {product.price}</Text>
+                <Text className='opacity-80 text-lg'>R$ {product.price.toFixed(2)}</Text>
             </View>
 
             <View className='flex-row w-full items-center justify-end gap-4' >

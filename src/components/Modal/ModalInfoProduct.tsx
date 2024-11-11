@@ -2,7 +2,7 @@ import { View, Text, Modal, Image, Pressable, ScrollView, Alert, TouchableOpacit
 import { AntDesign } from '@expo/vector-icons';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { TitlePages } from '../TitlePages';
-import { addToCart } from '@/src/API/Cart/addToCart';
+import { addToCart } from '@/src/API/cart/addToCart';
 import { pushNotification } from '@/src/func/pushNotification';
 
 interface PropsModal {
@@ -54,7 +54,7 @@ export function ModalInfoProduct({ product, visible, closeModal }: PropsModal) {
 
 
             <Image
-              source={{ uri: product.image }}
+              source={{ uri: product.images[0].imagePath }}
               className='h-[28rem] sm:h-3/4 rounded-md'
             />
 

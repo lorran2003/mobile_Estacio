@@ -1,4 +1,4 @@
-import { getProductsFromCart } from "@/src/API/Cart/getProductFromCart";
+import { getProductsFromCart } from "@/src/API/cart/getProductFromCart";
 import { Index } from "@/src/components/Cart/Index";
 import { Footer } from "@/src/components/Footer";
 import { CardsLoad } from "@/src/components/Loading/CardsLoad";

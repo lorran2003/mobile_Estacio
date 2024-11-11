@@ -3,7 +3,7 @@ import { PropsAPI } from "../type/typeAPI";
 export const getProducts = async () => {
 
   try {
-    const url: URL = new URL('http://192.168.1.245:3000/products');
+    const url: URL = new URL(`https://localhost:5001/api/Product/get-all-products`);
         
     const response = await fetch(url, {
       method: "GET",

@@ -62,9 +62,6 @@ export default function AuthContext({ children }: PropsWithChildren) {
                         if (!response) {
                             throw new Error('Usuário não encontrado');
                         }
-
-                        setImage(response.photo);
-
                         setUser(response);
                         setSession(true);
                         router.replace('/(tabs)/user/profile');

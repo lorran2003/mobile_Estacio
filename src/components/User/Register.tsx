@@ -1,10 +1,32 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { TitlePages } from '../TitlePages';
 import { Logo } from '../Logo';
 import { Input } from '../Input';
 import { Link } from 'expo-router';
+import { useState } from 'react';
+import { registerUser, TypeRegisterUser } from "@/src/API/User/registerUser";
 
 export function RegisterUser() {
+
+  const [fullName, setFullName] = useState<string>('');
+  const [cellPhone, setCellPhone] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [cpf, setCpf] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const submitData = () => {
+
+    const data : TypeRegisterUser = {
+      name: fullName,
+      email: email,
+      cpf: cpf,
+      password: password,
+      phone: cellPhone
+    }
+
+     registerUser(data);
+  }
+  
   return (
     <View className='w-full items-center gap-10'>
 
@@ -19,27 +41,24 @@ export function RegisterUser() {
         <View className='justify-center items-center gap-3'
         >
 
-          <Input label='Nome completo: ' />
+          <Input label='Nome completo: ' onChangeText={setFullName} />
 
-          <Input label='Telefone :' />
+          <Input label='Telefone :'onChangeText={setCellPhone} />
 
-          <Input label='E-mail :' />
+          <Input label='E-mail :' onChangeText={setEmail} />
 
-          <Input label='CPF :' />
+          <Input label='CPF :' onChangeText={setCpf} />
 
-          <Input label='Endereço :' />
-
-          <Input label='CEP :' />
-
-          <Input label='Complemento : (opcional)' />
-
-          <Input label='Senha :' />
+          <Input label='Senha :' onChangeText={setPassword} />
 
         </View>
 
-        <Pressable className='bg-[#CA9D37] rounded-md py-2 px-8'>
+        <TouchableOpacity 
+        className='bg-[#CA9D37] rounded-md py-2 px-8'
+        onPress={() => submitData()}
+        >
           <Text className='text-zinc-50 font-semibold text-xl'>Registrar</Text>
-        </Pressable>
+        </TouchableOpacity>
 
         <Link href={'/user/login'}>
           <Text className='text-zinc-800/60 underline'>

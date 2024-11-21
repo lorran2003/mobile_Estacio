@@ -4,7 +4,7 @@ import { PageNavigation } from '../Navigation/PageNavigation';
 import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../Modal/ModalInfoProduct';
-import { removeAllToCart } from '@/src/API/cart/removeAllToCart';
+import { removeAllToCart } from '@/src/API/Cart/removeAllToCart';
 import { router } from 'expo-router';
 import { pushNotification } from '@/src/func/pushNotification';
 

@@ -37,7 +37,7 @@ export function Carousel({ dataProducts }: { dataProducts: PropsAPI[] }) {
           <FlatList
             ref={flatListRef}
             data={products}
-            renderItem={({ item }) => <ConatinerCarousel key={item.id} image={item.image} />}
+            renderItem={({ item }) => <ConatinerCarousel key={item.id} image={item.images[0].imagePath} />}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             decelerationRate={'fast'}

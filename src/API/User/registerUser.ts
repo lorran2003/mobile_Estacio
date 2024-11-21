@@ -12,7 +12,7 @@ export interface TypeRegisterUser {
 
 export const registerUser = async (user: TypeRegisterUser) => {
     try {
-
+        
         const url: URL = new URL('https://localhost:5001/api/User/create-user');
 
         const response = await fetch(url, {
@@ -22,6 +22,7 @@ export const registerUser = async (user: TypeRegisterUser) => {
             
         });
         const data: string  = await response.json();
+        
         return data
     }
     catch (e) {

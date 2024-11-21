@@ -13,12 +13,12 @@ export function TitlePages({ title, numberProducts }: PropsTitlePages) {
         if (numberProducts && title === 'Carrinho') {
             const arrayPrice = numberProducts.map(product => Number(product.price));
             const totalPrice = arrayPrice.reduce((acc, cur) => acc + cur, 0);
-            return <Text className='text-zinc-800/70 font-medium text-lg pl-1'>Total de R$ {totalPrice.toFixed(2)}</Text>;
+            return <Text className='text-zinc-800/70 font-medium text-lg pl-1'>Total: R$ {totalPrice.toFixed(2)}</Text>;
         }
 
         else if (numberProducts) {
 
-            return <Text className='text-zinc-800/70 font-medium text-lg pl-1'>Total de produtos {numberProducts.length}</Text>;
+            return <Text className='text-zinc-800/70 font-medium text-lg pl-1'>Total de produtos: {numberProducts.length}</Text>;
         }
     }
 

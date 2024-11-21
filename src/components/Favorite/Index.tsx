@@ -4,7 +4,7 @@ import { CardsProducts } from '../Products/Cards/CardsProducts';
 import { PageNavigation } from '../Navigation/PageNavigation';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { ModalInfoProduct } from '../Modal/ModalInfoProduct';
-import { addToCart } from '@/src/API/cart/addToCart';
+import { addToCart } from '@/src/API/Cart/addToCart';
 import { removeProductsFavoriteList } from '@/src/API/Favorite/removeFromFavorite';
 import { router } from 'expo-router';
 

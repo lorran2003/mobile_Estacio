@@ -12,7 +12,7 @@ interface PropsModalMenu {
 
 export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
 
-    const { image, user } = useSession();
+    const { image, user, signOut } = useSession();
 
     const routerUser  = useRouterUser();
 
@@ -129,8 +129,8 @@ export function ModalMenu({ visible, translateX, closeModal }: PropsModalMenu) {
                             </View>
 
                             <Pressable
-
                                 className='flex-row gap-4 items-center'
+                                onPress={() => signOut()}
                             >
                                 <Ionicons name="exit-outline" size={28} color="grey" />
                                 <Text className='text-neutral-500 font-medium text-xl'>Sair</Text>

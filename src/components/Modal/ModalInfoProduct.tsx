@@ -2,7 +2,7 @@ import { View, Text, Modal, Image, Pressable, ScrollView, Alert, TouchableOpacit
 import { AntDesign } from '@expo/vector-icons';
 import { PropsAPI } from '@/src/type/typeAPI';
 import { TitlePages } from '../TitlePages';
-import { addToCart } from '@/src/API/cart/addToCart';
+import { addToCart } from '@/src/API/Cart/addToCart';
 import { pushNotification } from '@/src/func/pushNotification';
 
 interface PropsModal {

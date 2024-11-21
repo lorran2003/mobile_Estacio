@@ -25,6 +25,8 @@ export function RegisterUser() {
     }
 
      registerUser(data);
+
+
   }
   
   return (

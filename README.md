@@ -1,4 +1,4 @@
-Repositorio do back end: https://github.com/lorran2003/mobile_Estacio
+Repositorio do back end: https://github.com/ruanthow/ProjetoEstacioMobileApi
 
 
 # Welcome to your Expo app 👋
